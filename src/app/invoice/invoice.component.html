@@ -38,8 +38,12 @@
 
 <div class="form-row">
     <div class="form-group col-md-6">
-        <label for="showroom" class="required-field">Show Room</label>
-        <input type="text" formControlName="showroom" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.showroom.errors }" />
+        <label for="showroom"     class="required-field">Show Room</label>
+        <select class="custom-select "  formControlName="showroom" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.showroom.errors }">
+            <option value="Odapally">Odapally</option>
+            <option value="Gatamaneni">Gatamaneni</option>
+            <option value="Nara">Nara</option>
+          </select>
         <div *ngIf="submitted && f.showroom.errors" class="invalid-feedback">
             <div *ngIf="f.showroom.errors.required" class="required-alert">Show Room is required</div>
         </div>
@@ -90,28 +94,26 @@
 </div>
 
 <div class="form-row">
-   <div class="form-group col-md-6">
+   <div class=" form-group col-md-4">
         <label for="stoneWeight" class="required-field">Stone Weight</label>
         <input type="number" formControlName="stoneWeight" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.stoneWeight.errors }" />
         <div *ngIf="submitted && f.stoneWeight.errors" class="invalid-feedback">
             <div *ngIf="f.stoneWeight.errors.required" class="required-alert">Stone Weight is required</div>
         </div>
     </div>
-    <div class="form-group col-md-6">
+    <div class=" form-group col-md-4">
         <label for="netWeight" class="required-field">Net Weight</label>
         <input type="number" formControlName="netWeight" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.netWeight.errors }" />
         <div *ngIf="submitted && f.netWeight.errors" class="invalid-feedback">
             <div *ngIf="f.netWeight.errors.required" class="required-alert">Net Weight is required</div>
         </div>
     </div>
-    
-</div>
-
-<div class="form-group col-md-6">
+    <div class=" form-group col-md-4">
     <label for="makingCharges" class="required-field">Making Charges</label>
     <input type="number" formControlName="makingCharges" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.makingCharges.errors }" />
     <div *ngIf="submitted && f.makingCharges.errors" class="invalid-feedback">
         <div *ngIf="f.makingCharges.errors.required" class="required-alert">Making Charges is required</div>
+    </div>
     </div>
 </div>
 
