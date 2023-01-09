@@ -1,0 +1,133 @@
+﻿<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <style>
+    .required-field::after {
+    content: "*";
+    color: red;
+}
+.required-alert {
+    color: red;
+}
+    </style>
+  </head>
+<h2>Create Invoice</h2><br><br>
+<form [formGroup]="invoiceForm" (ngSubmit)="onSubmit()">
+
+<div class="form-row">
+    <div class="form-group col-md-6">
+        <label for="deliveryDate" class="required-field">Delivery Date</label>
+        <input type="datetime-local" formControlName="deliveryDate" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.deliveryDate.errors }" />
+        <div *ngIf="submitted && f.deliveryDate.errors" class="invalid-feedback">
+            <div *ngIf="f.deliveryDate.errors.required" class="required-alert">Delivery Date is required</div>
+        </div>
+    </div>
+    
+    <div class="form-group col-md-6">
+        <label for="orderNumber" class="required-field">Order No</label>
+        <input type="number" formControlName="orderNumber" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.orderNumber.errors }" />
+        <div *ngIf="submitted && f.orderNumber.errors" class="invalid-feedback">
+            <div *ngIf="f.orderNumber.errors.required" class="required-alert">orderNumber is required</div>
+        </div>
+    </div>
+</div>
+
+<div class="form-row">
+    <div class="form-group col-md-6">
+        <label for="showroom" class="required-field">Show Room</label>
+        <input type="text" formControlName="showroom" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.showroom.errors }" />
+        <div *ngIf="submitted && f.showroom.errors" class="invalid-feedback">
+            <div *ngIf="f.showroom.errors.required" class="required-alert">Show Room is required</div>
+        </div>
+    </div>
+    <div class="form-group col-md-6">
+        <label for="itemName" class="required-field">ItemName</label>
+        <input type="text" formControlName="itemName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.itemName.errors }" />
+        <div *ngIf="submitted && f.itemName.errors" class="invalid-feedback">
+            <div *ngIf="f.itemName.errors.required" class="required-alert">ItemName is required</div>
+        </div>
+    </div>
+</div>
+
+<div class="form-row">
+    <div class="form-group col-md-6">
+        <label for="grossWeight" class="required-field">Gross Weight</label>
+        <input type="number" formControlName="grossWeight" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.grossWeight.errors }" />
+        <div *ngIf="submitted && f.grossWeight.errors" class="invalid-feedback">
+            <div *ngIf="f.grossWeight.errors.required" class="required-alert">Gross Weight is required</div>
+        </div>
+    </div>
+
+    <div class="form-group col-md-6">
+        <label for="totalStones" class="required-field">Total Stones</label>
+        <input type="number" formControlName="totalStones" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.totalStones.errors }" />
+        <div *ngIf="submitted && f.totalStones.errors" class="invalid-feedback">
+            <div *ngIf="f.totalStones.errors.required" class="required-alert">Total Stones is required</div>
+        </div>
+    </div>
+    
+</div>
+
+<div class="form-row">
+    <div class="form-group col-md-6">
+        <label for="gold92Per" class="required-field">Gold(92%)</label>
+        <input type="number" formControlName="gold92Per" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.gold92Per.errors }" />
+        <div *ngIf="submitted && f.gold92Per.errors" class="invalid-feedback">
+            <div *ngIf="f.gold92Per.errors.required" class="required-alert">Gold(92%) is required</div>
+        </div>
+    </div>
+    <div class="form-group col-md-6">
+        <label for="gold12Per" class="required-field">Gold(12%)</label>
+        <input type="number" formControlName="gold12Per" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.gold12Per.errors }" />
+        <div *ngIf="submitted && f.gold12Per.errors" class="invalid-feedback">
+            <div *ngIf="f.gold12Per.errors.required" class="required-alert">Gold(12%) is required</div>
+        </div>
+    </div>
+</div>
+
+<div class="form-row">
+   <div class="form-group col-md-6">
+        <label for="stoneWeight" class="required-field">Stone Weight</label>
+        <input type="number" formControlName="stoneWeight" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.stoneWeight.errors }" />
+        <div *ngIf="submitted && f.stoneWeight.errors" class="invalid-feedback">
+            <div *ngIf="f.stoneWeight.errors.required" class="required-alert">Stone Weight is required</div>
+        </div>
+    </div>
+    <div class="form-group col-md-6">
+        <label for="netWeight" class="required-field">Net Weight</label>
+        <input type="number" formControlName="netWeight" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.netWeight.errors }" />
+        <div *ngIf="submitted && f.netWeight.errors" class="invalid-feedback">
+            <div *ngIf="f.netWeight.errors.required" class="required-alert">Net Weight is required</div>
+        </div>
+    </div>
+    
+</div>
+
+<div class="form-group col-md-6">
+    <label for="makingCharges" class="required-field">Making Charges</label>
+    <input type="number" formControlName="makingCharges" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.makingCharges.errors }" />
+    <div *ngIf="submitted && f.makingCharges.errors" class="invalid-feedback">
+        <div *ngIf="f.makingCharges.errors.required" class="required-alert">Making Charges is required</div>
+    </div>
+</div>
+
+    <div class="form-group col-md-10" >
+        <button [disabled]="loading" class="btn btn-primary" style="margin-right: 10px" >Register</button>
+        <img *ngIf="loading" class="pl-3" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+        <!-- <a routerLink="/login" class="btn btn-link">Cancel</a> -->
+        <button routerLink="/login"  class="btn btn-danger" style="margin-left: 10px;">Cancel</button>
+    </div>
+
+<!-- </div> -->
+<!-- <div class="split right"> -->
+ <!-- <div class="sub-entry">
+    <img [src] ="ImagePath"
+          style="width: 850px; height: 600px; padding-left: 200px;">
+ </div> -->
+<!-- </div> -->
+
+</form>

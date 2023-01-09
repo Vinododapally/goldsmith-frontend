@@ -9,6 +9,7 @@ import { HomeComponent } from './home/home.component';
 import { AlertComponent } from './components';
 import { LoginComponent } from './login';
 import { RegisterComponent } from './register';
+import { InvoiceComponent } from './invoice';
 
 @NgModule({
   imports: [
@@ -23,7 +24,8 @@ import { RegisterComponent } from './register';
          AlertComponent,
          HomeComponent,
          LoginComponent,
-         RegisterComponent
+         RegisterComponent,
+         InvoiceComponent
      ],
   providers: [],
   bootstrap: [AppComponent]

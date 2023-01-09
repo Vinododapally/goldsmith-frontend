@@ -1,13 +1,15 @@
 <!-- nav -->
-
+<div class="header">
 <nav class="navbar navbar-expand navbar-dark bg-dark" *ngIf="currentUser">
   <div class="navbar-nav">
     <a class="nav-item nav-link" routerLink="/">Home</a>
     <a class="nav-item nav-link" (click)="logout()">Logout</a>
   </div>
 </nav>
+</div>
 
 <!-- main app container -->
+<div class="content">
 <div class="jumbotron">
   <div class="container">
     <div class="row">
@@ -18,8 +20,10 @@
     </div>
   </div>
 </div>
+</div>
 
 <!-- credits -->
+<!-- <div class="footer">
 <div class="text-center">
   <p>
     <a href="https://github.com/Vinododapally/goldsmith-frontend" target="_top">Angular 7 - User Registration and Login</a>
@@ -28,3 +32,4 @@
     <a href="https://github.com/Vinododapally" target="_top">Vinod Odapally</a>
   </p>
 </div>
+</div> -->
