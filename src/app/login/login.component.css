@@ -1,4 +1,14 @@
 @import url("https://fonts.googleapis.com/css?family=Lato:400,700");
+
+::-webkit-scrollbar {
+  display: none;
+}
+*{
+  box-sizing: border-box;
+}
+html{
+  height: 100vh;
+}
 #bg {
   background-image: url('src/app/img/bg1.jpg');
   position: fixed;

@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <style>
+    <!-- <style>
       
       .split {
         height: 100%;
@@ -29,61 +29,73 @@
     float: left;
     }
       
-      </style>
+      </style> -->
+    <style>
+    .required-field::after {
+    content: "*";
+    color: red;
+}
+.required-alert {
+    color: red;
+}
+
+    </style>
   </head>
-<h2>Register</h2><br><br>
+<h2>Create User</h2><br><br>
 <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
   <!-- <div class="split left"> -->
 <div class="form-row">
     <div class="form-group col-md-6">
-        <label for="username">UserName</label>
+        <label for="username" class="required-field">UserName</label>
         <input type="text" formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
         <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
-            <div *ngIf="f.username.errors.required">UserName is required</div>
+            <div *ngIf="f.username.errors.required" class="required-alert">UserName is required</div>
         </div>
     </div>
     <div class="form-group col-md-6">
-        <label for="password">Password</label>
+        <label for="password" class="required-field">Password</label>
         <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
         <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
-            <div *ngIf="f.password.errors.required">Password is required</div>
-            <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
+            <div *ngIf="f.password.errors.required" class="required-alert">Password is required</div>
+            <div *ngIf="f.password.errors.minlength" class="required-alert">Password must be at least 6 characters</div>
         </div>
     </div>
 </div>
+
 <div class="form-row">
     <div class="form-group col-md-6">
-        <label for="mobileNumber">Mobile No</label>
+        <label for="mobileNumber" class="required-field">Mobile No</label>
         <input type="number" formControlName="mobileNumber" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.mobileNumber.errors }" />
         <div *ngIf="submitted && f.mobileNumber.errors" class="invalid-feedback">
-            <div *ngIf="f.mobileNumber.errors.required">Mobile No is required</div>
-            <div *ngIf="f.mobileNumber.errors.minlength">Mobile No must be at 10 digits</div>
+            <div *ngIf="f.mobileNumber.errors.required" class="required-alert">Mobile No is required</div>
+            <div *ngIf="f.mobileNumber.errors.minlength" class="required-alert">Mobile No must be at 10 digits</div>
         </div>
     </div>
     <div class="form-group col-md-6">
-        <label for="email">Email</label>
+        <label for="email" class="required-field">Email</label>
         <input type="email" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
         <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
-            <div *ngIf="f.email.errors.required">Email is required</div>
+            <div *ngIf="f.email.errors.required" class="required-alert">Email is required</div>
         </div>
     </div>
 </div>
-<div class="form-group">
-    <div class="form-group col-md-6">
-        <label for="role">Role</label>
-        <input type="text" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.role.errors }" />
+
+    <div class="form-group col-md-6  ">
+        <label for="role" class="required-field">Role</label>
+        <input type="text" formControlName="role" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.role.errors }" />
         <div *ngIf="submitted && f.role.errors" class="invalid-feedback">
-            <div *ngIf="f.role.errors.required">Role is required</div>
+            <div *ngIf="f.role.errors.required" class="required-alert">Role is required</div>
         </div>
     </div>
-</div>
-<div class="form-group">
-    <div class="form-group col-md-8">
-        <button [disabled]="loading" class="btn btn-primary">Register</button>
+
+
+    <div class="form-group col-md-10" >
+        <button [disabled]="loading" class="btn btn-primary" style="margin-right: 10px" >Register</button>
         <img *ngIf="loading" class="pl-3" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
-        <a routerLink="/login" class="btn btn-link">Cancel</a>
+        <!-- <a routerLink="/login" class="btn btn-link">Cancel</a> -->
+        <button routerLink="/login"  class="btn btn-danger" style="margin-left: 10px;">Cancel</button>
     </div>
-</div>
+
 <!-- </div> -->
 <!-- <div class="split right"> -->
  <!-- <div class="sub-entry">  
