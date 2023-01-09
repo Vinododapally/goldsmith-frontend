@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Gold Smith Process</title>
+  <!--  <link rel="stylesheet" href="./login.component.css">-->
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<div id="bg"></div>
+
+<form (ngSubmit)="onSubmit()">
+  <div class="form-field">
+    <input type="user" placeholder="Username" [(ngModel)]="user.username" name="username" id="username"/>
+  </div>
+
+  <div class="form-field">
+    <input type="password" placeholder="Password" [(ngModel)]="user.password" name="password" id="password"/>                         </div>
+
+  <div class="form-field">
+    <button class="btn" type="submit">Log in</button>
+  </div>
+</form>
+<!-- partial -->
+
+</body>
+</html>

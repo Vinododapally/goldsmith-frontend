@@ -1,28 +1,29 @@
-<!DOCTYPE html>
-<html lang="en" >
-<head>
-  <meta charset="UTF-8">
-  <title>Login Page with Background Image Example</title>
-<!--  <link rel="stylesheet" href="./app.component.css">-->
-
-</head>
-<body>
-<!-- partial:index.partial.html -->
-<div id="bg"></div>
-
-<form (ngSubmit)="onSubmit()">
-  <div class="form-field">
-    <input type="user" placeholder="Email / Username" required [(ngModel)]="user.username" name="username" id="username"/>
+<!-- nav -->
+<nav class="navbar navbar-expand navbar-dark bg-dark" *ngIf="currentUser">
+  <div class="navbar-nav">
+    <a class="nav-item nav-link" routerLink="/">Home</a>
+    <a class="nav-item nav-link" (click)="logout()">Logout</a>
   </div>
+</nav>
 
-  <div class="form-field">
-    <input type="password" placeholder="Password" required [(ngModel)]="user.password" name="password" id="password"/>                         </div>
-
-  <div class="form-field">
-    <button class="btn" type="submit">Log in</button>
+<!-- main app container -->
+<div class="jumbotron">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-6 offset-sm-3">
+        <alert></alert>
+        <router-outlet></router-outlet>
+      </div>
+    </div>
   </div>
-</form>
-<!-- partial -->
+</div>
 
-</body>
-</html>
+<!-- credits -->
+<div class="text-center">
+  <p>
+    <a href="https://github.com/Vinododapally/goldsmith-frontend" target="_top">Angular 7 - User Registration and Login</a>
+  </p>
+  <p>
+    <a href="https://github.com/Vinododapally" target="_top">Vinod Odapally</a>
+  </p>
+</div>

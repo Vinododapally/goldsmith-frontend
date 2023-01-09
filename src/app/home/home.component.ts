@@ -7,7 +7,7 @@ import { AuthenticationService, UserService } from '../services';
 
 @Component({   selector: 'app-home',templateUrl: 'home.component.html' })
 export class HomeComponent implements OnInit, OnDestroy {
-    currentUser: User;
+    currentUser: String;
     currentUserSubscription: Subscription;
     users: User[] = [];
 
@@ -15,9 +15,11 @@ export class HomeComponent implements OnInit, OnDestroy {
         private authenticationService: AuthenticationService,
         private userService: UserService
     ) {
-        this.currentUserSubscription = this.authenticationService.currentUser.subscribe(user => {
-            this.currentUser = user;
-        });
+        // this.currentUserSubscription = this.authenticationService.currentUser.subscribe(user => {
+        //     console.log('stored user?'+JSON.stringify(user));
+        //     this.currentUser = JSON.stringify(user);
+        // });
+        this.currentUser=localStorage.getItem('currentUser')
     }
 
     ngOnInit() {

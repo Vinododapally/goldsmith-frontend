@@ -1,32 +1,22 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { User } from './models';
+
 import { AuthenticationService } from './services';
+import { User } from './models';
 
-@Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
-})
-export class AppComponent  {
-  user: User = new User();
-  title = 'goldsmith-frontend';
+@Component({ selector: 'app-root', templateUrl: 'app.component.html' })
+export class AppComponent {
+    currentUser: String;
 
-  constructor(private authenticationService: AuthenticationService,
-    private router: Router) { }
-
-    onSubmit() {
-      console.log(this.user);
-      this.authenticationService
-      .login(this.user).subscribe(data => {
-        console.log(data)
-        this.user = new User();
-        this.goto();
-      },
-      error => console.log(error));
-    }
-    goto() {
-      this.router.navigate(['/home']);
+    constructor(
+        private router: Router,
+        private authenticationService: AuthenticationService
+    ) {
+      this.currentUser=localStorage.getItem('currentUser')
     }
 
+    logout() {
+        this.authenticationService.logout();
+        this.router.navigate(['/login']);
+    }
 }
