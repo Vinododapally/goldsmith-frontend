@@ -9,6 +9,9 @@
 html{
   height: 100vh;
 }
+.required-alert {
+  color: red;
+}
 #bg {
   background-image: url('src/app/img/bg1.jpg');
   position: fixed;

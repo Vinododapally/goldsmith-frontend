@@ -13,13 +13,15 @@ export class LoginComponent implements OnInit {
     loading = false;
     submitted = false;
     returnUrl: string;
+    loginForm: FormGroup;
    
 
     constructor(
         private route: ActivatedRoute,
         private router: Router,
         private authenticationService: AuthenticationService,
-        private alertService: AlertService
+        private alertService: AlertService,
+        private formBuilder: FormBuilder
     ) {
         // redirect to home if already logged in
         if (this.authenticationService.currentUserValue) {
@@ -31,16 +33,20 @@ export class LoginComponent implements OnInit {
     ngOnInit() {
         // get return url from route parameters or default to '/'
         this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+        this.loginForm = this.formBuilder.group({
+            username: ['', Validators.required],
+            password: ['', [Validators.required, Validators.minLength(6)]]
+        });
     }
 
     // convenience getter for easy access to form fields
-
+    get f() { return this.loginForm.controls; }
 
     onSubmit() {
         this.submitted = true;
         this.loading = true;
-        if(this.user.username && this.user.password){
-        this.authenticationService.login(this.user)
+        // if(this.user.username && this.user.password){
+        this.authenticationService.login(this.loginForm.value)
             .subscribe(
                 data => {
                     this.router.navigate([this.returnUrl]);
@@ -50,8 +56,8 @@ export class LoginComponent implements OnInit {
                     this.alertService.error(error);
                     this.loading = false;
                 });
-    }else{
-        alert("please enter the valid inputs");
-    }
+     }//else{
+    //     alert("please enter the valid inputs");
+    // }
 }
-}
+//}
