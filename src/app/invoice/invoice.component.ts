@@ -76,4 +76,22 @@ export class InvoiceComponent implements OnInit {
                     this.loading = false;
                 });
     }
+
+    onChange(stoneWtCarat: number) {
+    let stoneWtField = this.invoiceForm.get('stoneWeightInGrams');
+        stoneWtField.setValue((stoneWtCarat * 200)/1000);
+
+    let stoneWtGm = stoneWtField.value;
+    let grossWt = this.invoiceForm.get('grossWeight').value;
+    let netWtField = this.invoiceForm.get('netWeight');
+    netWtField.setValue(grossWt - stoneWtGm);
+    let netWt = netWtField.value;
+    let nineTwoPerField = this.invoiceForm.get('gold92Per');
+        nineTwoPerField.setValue((netWt * 92)/100);
+    let nineTwoPer = nineTwoPerField.value;
+    let twelvePerField = this.invoiceForm.get('gold12Per');
+        twelvePerField.setValue((nineTwoPer * 12)/100);
+    let mcField = this.invoiceForm.get('makingCharges');
+        mcField.setValue((nineTwoPer + nineTwoPer.value) * 100);
+    }
 }
