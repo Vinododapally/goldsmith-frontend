@@ -1,0 +1,33 @@
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h2>Show Rooms</h2>
+  </div>
+  <div class="panel-body">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Show Room</th>
+          <th>Contact Name</th>
+          <th>Contact Number</th>
+          <th>Address</th>
+          <th>Actions</th>
+          <button (click)="addShowRoom()" class="btn btn-info" style="margin-left: 10px" title="Create showRoom">+</button>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let showroom of showrooms | async">
+          <td>{{showroom.name}}</td>
+          <td>{{showroom.contactName}}</td>
+          <td>{{showroom.mobileNumber}}</td>
+          <td>{{showroom.address}}</td>
+           <div >  
+          <td ><button (click)="deleteShowRoom(showroom.id)" class="btn btn-danger" style="font-size: 10px;" title="Delete">x</button>
+          <td style="padding-left: 20px; "><button (click)="updateShowRoom(showroom.id)" class="btn btn-info" style="font-size: 10px;" >edit</button></td>
+          <td style="padding-left: 30px; padding-top: 6px; padding-bottom: 6px;"> <button style="font-size: 10px;"(click)="showRoomDetails(showroom.id)" class="btn btn-info" >details</button>
+           </div>  
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+

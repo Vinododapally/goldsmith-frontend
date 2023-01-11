@@ -1,0 +1,47 @@
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h2>Invoices</h2>
+  </div>
+  <div class="panel-body">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Delivery Date</th>
+          <th>Show Room</th>
+          <th>Item Name</th>
+          <th>Gross Weight</th>
+          <th>Total Stones</th>
+          <th>Gold(92%)</th>
+          <th>Gold(12%)</th>
+          <th>Stone Weight</th>
+          <th>Net Weight</th>
+          <th>Making Charges</th>
+          <th>Actions</th>
+    
+          <button (click)="addInvoice()" class="btn btn-info" style="margin-left: 10px" title="Create Invoice">+</button>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let invoice of invoices | async">
+          <td>{{invoice.deliveryDate}}</td>
+          <td>{{invoice.showroom}}</td>
+          <td>{{invoice.itemName}}</td>
+          <td>{{invoice.grossWeight}}</td>
+          <td>{{invoice.totalStones}}</td>
+          <td>{{invoice.gold92Per}}</td>
+          <td>{{invoice.gold12Per}}</td>
+          <td>{{invoice.stoneWeight}}</td>
+          <td>{{invoice.netWeight}}</td>
+          <td>{{invoice.makingCharges}}</td>
+           <div class="col">
+          <td ><button (click)="deleteUser(invoice.refId)" class="btn btn-danger" title="Delete" style="font-size: 10px;">x</button>
+          <td style="padding-left: 20px;"><button (click)="updateUser(invoice.refId)" class="btn btn-info" style="font-size: 10px;">edit</button></td>
+          <td style="padding-left: 20px; padding-top: 6px; padding-bottom: 6px;"> <button (click)="userDetails(invoice.refId)" class="btn btn-info" style="font-size: 10px;">details</button>
+          </td>
+          </div>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+

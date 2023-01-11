@@ -4,6 +4,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 import { AuthenticationService, AlertService } from '../services';
 import { InvoiceService } from '../services/invoice.service';
+import { ShowRoomService } from '../services/showroom.service';
+import { Observable } from 'rxjs';
+import { ShowRoom } from '../models/showRoom';
 
 
 @Component({templateUrl: 'invoice.component.html'})
@@ -12,17 +15,18 @@ export class InvoiceComponent implements OnInit {
     loading = false;
     submitted = false;
     ImagePath: string;
-
+    showrooms: Observable<ShowRoom[]>;
     constructor(
         private formBuilder: FormBuilder,
         private router: Router,
         private authenticationService: AuthenticationService,
         private invoiceService: InvoiceService,
-        private alertService: AlertService
+        private alertService: AlertService,
+        private showRoomService: ShowRoomService
     ) { 
         // redirect to home if already logged in
         if (this.authenticationService.currentUserValue) { 
-            this.router.navigate(['/']);
+            //this.router.navigate(['/']);
         }
         this.ImagePath = '/assets/images/bg.jpg'
     }
@@ -41,6 +45,8 @@ export class InvoiceComponent implements OnInit {
             gold12Per: ['', Validators.required],
             deliveryDate: ['', [Validators.required]]
         });
+
+        this.showrooms = this.showRoomService.getAll();
     }
 
     // convenience getter for easy access to form fields
@@ -60,7 +66,7 @@ export class InvoiceComponent implements OnInit {
             .subscribe(
                 data => {
                     this.alertService.success('Invoices saved successfully', true);
-                    this.router.navigate(['/']);
+                    this.router.navigate(['/invoices']);
                 },
                 error => {
                     this.alertService.error(error);

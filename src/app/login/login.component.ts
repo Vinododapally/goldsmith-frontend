@@ -49,8 +49,9 @@ export class LoginComponent implements OnInit {
         this.authenticationService.login(this.loginForm.value)
             .subscribe(
                 data => {
-                    this.router.navigate([this.returnUrl]);
+                    //this.router.navigate([this.returnUrl]);
                     console.log('invalid username or password '+data.status);
+                    this.router.navigate(['/home']);
                 },
                 error => {
                     this.alertService.error(error);

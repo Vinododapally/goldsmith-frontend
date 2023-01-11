@@ -1,35 +1,46 @@
-<!-- nav -->
+ <head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  </head> 
+
 <div class="header">
-<nav class="navbar navbar-expand navbar-dark bg-dark" *ngIf="currentUser">
-  <div class="navbar-nav">
-    <a class="nav-item nav-link" routerLink="/">Home</a>
-    <a class="nav-item nav-link" (click)="logout()">Logout</a>
-  </div>
-</nav>
-</div>
+      <nav class="navbar navbar-inverse" *ngIf="currentUser">
+        <div class="container-fluid">
+          <ul class="nav navbar-nav">
+            <li style=" padding-top: 15px; color: white;">Shirngar Jeweller's</li>
+            <li ><a routerLink="/home">Home</a></li>
+            <li><a routerLink="/showrooms">ShowRooms</a></li>
+            <li><a routerLink="/invoices">Invoices</a></li>
+            <li><a routerLink="/users">Users</a></li>
+            <div style="padding-left: 1100px; padding-top: 15px; color: white;"><li>welcome {{currentUser}}!</li></div>
+            <div style="padding-left: 1300px; color: white;"   (click)="logout()" ><li>Logout</li> </div>
+          </ul>
+        </div>
+      </nav>
+</div> 
 
 <!-- main app container -->
 <div class="content">
-<div class="jumbotron">
   <div class="container">
-    <div class="row">
-      <div class="col-sm-6 offset-sm-3">
-        <alert></alert>
-        <router-outlet></router-outlet>
-      </div>
-    </div>
+    
+      <router-outlet></router-outlet>
   </div>
 </div>
-</div>
 
-<!-- credits -->
-<!-- <div class="footer">
-<div class="text-center">
-  <p>
-    <a href="https://github.com/Vinododapally/goldsmith-frontend" target="_top">Angular 7 - User Registration and Login</a>
-  </p>
-  <p>
-    <a href="https://github.com/Vinododapally" target="_top">Vinod Odapally</a>
-  </p>
-</div>
-</div> -->
+    <!-- <div class="content">
+      <div class="jumbotron">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-6 offset-sm-3">
+              <alert></alert>
+              <router-outlet></router-outlet>
+            </div>
+          </div>
+        </div>
+      </div> 
+      </div> -->
+<!-- <div class="footer"> <h1>From Footer</h1></div> -->
+

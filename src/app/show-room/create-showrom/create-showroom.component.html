@@ -1,0 +1,87 @@
+﻿<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <!-- <style>
+
+      .split {
+        height: 100%;
+        width: 50%;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        overflow-x: hidden;
+        padding-top: 100px;
+      }
+
+      .left {
+        left: 0;
+      }
+
+      .right {
+        right: 0;
+      }
+      .sub-entry {
+    width: 50%;
+    float: left;
+    }
+
+      </style> -->
+    <style>
+    .required-field::after {
+    content: "*";
+    color: red;
+}
+.required-alert {
+    color: red;
+}
+
+    </style>
+  </head>
+<h2>Create Show Room</h2><br><br>
+<form [formGroup]="showRoomForm" (ngSubmit)="onSubmit()">
+  <!-- <div class="split left"> -->
+<div class="form-row">
+    <div class="form-group col-md-6">
+        <label for="name" class="required-field">Show Room</label>
+        <input type="text" formControlName="name" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.name.errors }" />
+        <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+            <div *ngIf="f.name.errors.required" class="required-alert">ShowRoom is required</div>
+        </div>
+    </div>
+    <div class="form-group col-md-6">
+        <label for="contactName" >Contact Name</label>
+        <input type="text" formControlName="contactName" class="form-control"/>
+    </div>
+</div>
+
+<div class="form-row">
+  <div class="form-group col-md-6">
+    <label for="mobileNumber" >Mobile Number</label>
+    <input type="text" formControlName="mobileNumber" class="form-control"/>
+  </div>
+  <div class="form-group col-md-6">
+    <label for="address" >Address</label>
+    <input type="text" formControlName="address" class="form-control"/>
+  </div>
+</div>
+
+    <div class="form-group col-md-10" >
+        <button [disabled]="loading" class="btn btn-primary" style="margin-right: 10px" >Submit</button>
+        <img *ngIf="loading" class="pl-3" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+        <!-- <a routerLink="/login" class="btn btn-link">Cancel</a> -->
+        <button routerLink="/showrooms"  class="btn btn-danger" style="margin-left: 10px;">Cancel</button>
+    </div>
+
+<!-- </div> -->
+<!-- <div class="split right"> -->
+ <!-- <div class="sub-entry">
+    <img [src] ="ImagePath"
+          style="width: 850px; height: 600px; padding-left: 200px;">
+ </div> -->
+<!-- </div> -->
+
+</form>

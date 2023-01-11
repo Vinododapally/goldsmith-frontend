@@ -1,4 +1,5 @@
 ﻿import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { first } from 'rxjs/operators';
 import { User } from '../models';
@@ -13,7 +14,9 @@ export class HomeComponent implements OnInit, OnDestroy {
 
     constructor(
         private authenticationService: AuthenticationService,
-        private userService: UserService
+        private userService: UserService,
+        private router: Router,
+    
     ) {
         // this.currentUserSubscription = this.authenticationService.currentUser.subscribe(user => {
         //     console.log('stored user?'+JSON.stringify(user));
@@ -28,7 +31,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
     ngOnDestroy() {
         // unsubscribe to ensure no memory leaks
-        this.currentUserSubscription.unsubscribe();
+        //this.currentUserSubscription.unsubscribe();
     }
 
     deleteUser(id: number) {
@@ -41,5 +44,10 @@ export class HomeComponent implements OnInit, OnDestroy {
         this.userService.getAll().pipe(first()).subscribe(users => {
             this.users = users;
         });
+    }
+
+    logout() {
+        localStorage.removeItem('currentUser');
+        this.router.navigate(['/']);
     }
 }

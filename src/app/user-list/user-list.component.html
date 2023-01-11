@@ -1,0 +1,34 @@
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h2>Users</h2>
+  </div>
+  <div class="panel-body">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>User Name</th>
+          <th>Mobile Number</th>
+          <th>Email</th>
+          <th>Role</th>
+          <th>Actions</th>
+          <button (click)="addUser()" class="btn btn-info" style="margin-left: 10px" title="Create User">+</button>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of users | async">
+          <td>{{user.username}}</td>
+          <td>{{user.mobileNumber}}</td>
+          <td>{{user.email}}</td>
+          <td>{{user.role}}</td>
+           <div class="col">
+          <td ><button (click)="deleteUser(user.id)" class="btn btn-danger" style="font-size: 10px;" title="Delete">x</button>
+          <td style="padding-left: 20px;"><button (click)="updateUser(user.id)" class="btn btn-info" style="font-size: 10px;">edit</button></td>
+          <td style="padding-left: 20px; padding-top: 6px; padding-bottom: 6px;"> <button (click)="userDetails(user.id)" class="btn btn-info" style="font-size: 10px;">details</button>
+          </td>
+          </div>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+

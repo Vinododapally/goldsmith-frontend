@@ -10,13 +10,14 @@ export class AppComponent {
 
     constructor(
         private router: Router,
-        private authenticationService: AuthenticationService
+        private authenticationService: AuthenticationService,
     ) {
       this.currentUser=localStorage.getItem('currentUser')
     }
 
     logout() {
         this.authenticationService.logout();
-        this.router.navigate(['/login']);
+        this.router.navigate(['/']);
+
     }
 }
