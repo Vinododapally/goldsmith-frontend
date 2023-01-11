@@ -1,6 +1,6 @@
 ﻿import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 import { AuthenticationService, AlertService } from '../services';
 import { InvoiceService } from '../services/invoice.service';
@@ -16,6 +16,9 @@ export class InvoiceComponent implements OnInit {
     submitted = false;
     ImagePath: string;
     showrooms: Observable<ShowRoom[]>;
+    stoneWtInGrams: number = 0;
+    netWeight = 0;
+
     constructor(
         private formBuilder: FormBuilder,
         private router: Router,
@@ -23,10 +26,9 @@ export class InvoiceComponent implements OnInit {
         private invoiceService: InvoiceService,
         private alertService: AlertService,
         private showRoomService: ShowRoomService
-    ) { 
-        // redirect to home if already logged in
-        if (this.authenticationService.currentUserValue) { 
-            //this.router.navigate(['/']);
+    ) {
+        if (this.authenticationService.currentUserValue) {
+            this.router.navigate(['/']);
         }
         this.ImagePath = '/assets/images/bg.jpg'
     }
@@ -43,7 +45,8 @@ export class InvoiceComponent implements OnInit {
             makingCharges: ['', Validators.required],
             gold92Per: ['', Validators.required],
             gold12Per: ['', Validators.required],
-            deliveryDate: ['', [Validators.required]]
+            deliveryDate: ['', [Validators.required]],
+            stoneWeightInCarat: ['', [Validators.required]]
         });
 
         this.showrooms = this.showRoomService.getAll();

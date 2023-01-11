@@ -26,7 +26,7 @@
             <div *ngIf="f.deliveryDate.errors.required" class="required-alert">Delivery Date is required</div>
         </div>
     </div>
-    
+
     <div class="form-group col-md-6">
         <label for="orderNumber" class="required-field">Order No</label>
         <input type="number" formControlName="orderNumber" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.orderNumber.errors }" />
@@ -58,7 +58,7 @@
 <div class="form-row">
     <div class="form-group col-md-6">
         <label for="grossWeight" class="required-field">Gross Weight</label>
-        <input type="number" formControlName="grossWeight" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.grossWeight.errors }" />
+        <input type="number" formControlName="grossWeight" id="grossWeight" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.grossWeight.errors }" />
         <div *ngIf="submitted && f.grossWeight.errors" class="invalid-feedback">
             <div *ngIf="f.grossWeight.errors.required" class="required-alert">Gross Weight is required</div>
         </div>
@@ -71,20 +71,32 @@
             <div *ngIf="f.totalStones.errors.required" class="required-alert">Total Stones is required</div>
         </div>
     </div>
-    
-</div>
 
+</div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="stoneWeightInCarat" class="required-field">stoneWeight(Carat)</label>
+      <input type="number" (ngModelChange) = onChange($event) formControlName="stoneWeightInCarat" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.stoneWeightInCarat.errors }" />
+      <div *ngIf="submitted && f.stoneWeightInCarat.errors" class="invalid-feedback">
+        <div *ngIf="f.stoneWeightInCarat.errors.required" class="required-alert">Gold(92%) is required</div>
+      </div>
+    </div>
+    <div class="form-group col-md-6">
+      <label for="stoneWeightInGrams" class="required-field">stoneWeight(Grams)</label>
+      <input disabled type="number" formControlName="stoneWeightInGrams" id="stoneWeightInGrams" class="form-control" />
+    </div>
+  </div>
 <div class="form-row">
     <div class="form-group col-md-6">
         <label for="gold92Per" class="required-field">Gold(92%)</label>
-        <input type="number" formControlName="gold92Per" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.gold92Per.errors }" />
+        <input disabled type="number" formControlName="gold92Per" id="gold92Per" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.gold92Per.errors }" />
         <div *ngIf="submitted && f.gold92Per.errors" class="invalid-feedback">
             <div *ngIf="f.gold92Per.errors.required" class="required-alert">Gold(92%) is required</div>
         </div>
     </div>
     <div class="form-group col-md-6">
         <label for="gold12Per" class="required-field">Gold(12%)</label>
-        <input type="number" formControlName="gold12Per" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.gold12Per.errors }" />
+        <input disabled type="number" formControlName="gold12Per" id="gold12Per" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.gold12Per.errors }" />
         <div *ngIf="submitted && f.gold12Per.errors" class="invalid-feedback">
             <div *ngIf="f.gold12Per.errors.required" class="required-alert">Gold(12%) is required</div>
         </div>
@@ -94,24 +106,15 @@
 <div class="form-row">
    <div class=" form-group col-md-4">
         <label for="stoneWeight" class="required-field">Stone Weight</label>
-        <input type="number" formControlName="stoneWeight" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.stoneWeight.errors }" />
-        <div *ngIf="submitted && f.stoneWeight.errors" class="invalid-feedback">
-            <div *ngIf="f.stoneWeight.errors.required" class="required-alert">Stone Weight is required</div>
-        </div>
+        <input disabled type="number" formControlName="stoneWeight" class="form-control" />
     </div>
     <div class=" form-group col-md-4">
         <label for="netWeight" class="required-field">Net Weight</label>
-        <input type="number" formControlName="netWeight" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.netWeight.errors }" />
-        <div *ngIf="submitted && f.netWeight.errors" class="invalid-feedback">
-            <div *ngIf="f.netWeight.errors.required" class="required-alert">Net Weight is required</div>
-        </div>
+        <input disabled type="number" formControlName="netWeight" id="netWeight" class="form-control" />
     </div>
     <div class=" form-group col-md-4">
     <label for="makingCharges" class="required-field">Making Charges</label>
-    <input type="number" formControlName="makingCharges" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.makingCharges.errors }" />
-    <div *ngIf="submitted && f.makingCharges.errors" class="invalid-feedback">
-        <div *ngIf="f.makingCharges.errors.required" class="required-alert">Making Charges is required</div>
-    </div>
+    <input disabled type="number" formControlName="makingCharges" id="makingCharges" class="form-control" />
     </div>
 </div>
 
