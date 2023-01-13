@@ -38,8 +38,8 @@
 
 <div class="form-row">
     <div class="form-group col-md-6">
-        <label for="showroom"     class="required-field">Show Room</label>
-        <select class="custom-select "  formControlName="showroom" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.showroom.errors }">
+        <label for="showroom" class="required-field">Show Room</label>
+        <select class="custom-select"  formControlName="showroom" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.showroom.errors }">
             <option value={{showroom.name}} *ngFor="let showroom of showrooms | async">{{showroom.name}}</option>
           </select>
         <div *ngIf="submitted && f.showroom.errors" class="invalid-feedback">
@@ -104,10 +104,6 @@
 </div>
 
 <div class="form-row">
-   <div class=" form-group col-md-4">
-        <label for="stoneWeight" class="required-field">Stone Weight</label>
-        <input disabled type="number" formControlName="stoneWeight" class="form-control" />
-    </div>
     <div class=" form-group col-md-4">
         <label for="netWeight" class="required-field">Net Weight</label>
         <input disabled type="number" formControlName="netWeight" id="netWeight" class="form-control" />

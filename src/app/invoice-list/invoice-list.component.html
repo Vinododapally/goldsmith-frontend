@@ -13,11 +13,12 @@
           <th>Total Stones</th>
           <th>Gold(92%)</th>
           <th>Gold(12%)</th>
-          <th>Stone Weight</th>
+          <th>Stone Weight(Carat)</th>
+          <th>Stone Weight(Grams)</th>
           <th>Net Weight</th>
           <th>Making Charges</th>
           <th>Actions</th>
-    
+
           <button (click)="addInvoice()" class="btn btn-info" style="margin-left: 10px" title="Create Invoice">+</button>
         </tr>
       </thead>
@@ -30,7 +31,8 @@
           <td>{{invoice.totalStones}}</td>
           <td>{{invoice.gold92Per}}</td>
           <td>{{invoice.gold12Per}}</td>
-          <td>{{invoice.stoneWeight}}</td>
+          <td>{{invoice.stoneWeightInCarat}}</td>
+          <td>{{invoice.stoneWeightInGrams}}</td>
           <td>{{invoice.netWeight}}</td>
           <td>{{invoice.makingCharges}}</td>
            <div class="col">

@@ -27,9 +27,9 @@ export class InvoiceComponent implements OnInit {
         private alertService: AlertService,
         private showRoomService: ShowRoomService
     ) {
-        if (this.authenticationService.currentUserValue) {
+        /* if (this.authenticationService.currentUserValue) {
             this.router.navigate(['/']);
-        }
+        } */
         this.ImagePath = '/assets/images/bg.jpg'
     }
 
@@ -41,12 +41,12 @@ export class InvoiceComponent implements OnInit {
             grossWeight: ['', Validators.required],
             totalStones: ['', Validators.required],
             netWeight: ['', Validators.required],
-            stoneWeight: ['', Validators.required],
             makingCharges: ['', Validators.required],
             gold92Per: ['', Validators.required],
             gold12Per: ['', Validators.required],
             deliveryDate: ['', [Validators.required]],
-            stoneWeightInCarat: ['', [Validators.required]]
+            stoneWeightInCarat: ['', [Validators.required]],
+            stoneWeightInGrams: ['']
         });
 
         this.showrooms = this.showRoomService.getAll();
@@ -92,6 +92,6 @@ export class InvoiceComponent implements OnInit {
     let twelvePerField = this.invoiceForm.get('gold12Per');
         twelvePerField.setValue((nineTwoPer * 12)/100);
     let mcField = this.invoiceForm.get('makingCharges');
-        mcField.setValue((nineTwoPer + nineTwoPer.value) * 100);
+        mcField.setValue((nineTwoPer + twelvePerField.value) * 100);
     }
 }
