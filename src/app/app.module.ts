@@ -8,12 +8,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './home/home.component';
 import { AlertComponent } from './components';
 import { LoginComponent } from './login';
-import { RegisterComponent } from './register';
-import { InvoiceComponent } from './invoice';
-import { InvoiceListComponent } from './invoice-list/invoice-list.component';
-import { UserListComponent } from './user-list/user-list.component';
 import { CreateShowRoomComponent } from './show-room/create-showrom/create-showroom.component';
 import { ShowRoomListComponent } from './show-room/showroom-list/showroom-list.component';
+import { InvoiceComponent } from './invoices/invoice';
+import { InvoiceListComponent } from './invoices/invoice-list/invoice-list.component';
+import { RegisterComponent } from './users/register';
+import { UserListComponent } from './users/user-list/user-list.component';
 
 
 

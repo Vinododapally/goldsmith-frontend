@@ -4,6 +4,7 @@ import { Component, OnInit } from "@angular/core";
 import { Router } from '@angular/router';
 import { ShowRoom } from "src/app/models/showRoom";
 import { ShowRoomService } from "src/app/services/showroom.service";
+import { AlertService } from "src/app/services";
 
 
 @Component({
@@ -13,9 +14,11 @@ import { ShowRoomService } from "src/app/services/showroom.service";
 })
 export class ShowRoomListComponent implements OnInit {
   showrooms: Observable<ShowRoom[]>;
+  loading = false;
+  submitted = false;
 
   constructor(private showRoomService: ShowRoomService,
-    private router: Router) {}
+    private router: Router,private alertService: AlertService) {}
 
   ngOnInit() {
     this.reloadData();
@@ -25,14 +28,17 @@ export class ShowRoomListComponent implements OnInit {
     this.showrooms = this.showRoomService.getAll();
   }
 
-  deleteUser(id: number) {
+  deleteShowRoom(id: number) {
     this.showRoomService.delete(id)
       .subscribe(
         data => {
-          console.log(data);
+          this.alertService.error('Showroom deleted successfully', true);
           this.reloadData();
         },
-        error => console.log(error));
+        error => {
+          this.alertService.error(error);
+          this.loading = false;
+      });
   }
 
   showRoomDetails(id: number){

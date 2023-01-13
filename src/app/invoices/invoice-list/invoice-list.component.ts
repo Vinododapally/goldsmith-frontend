@@ -2,8 +2,9 @@
 import { Observable } from "rxjs";
 import { Component, OnInit } from "@angular/core";
 import { Router } from '@angular/router';
-import { InvoiceService } from '../services/invoice.service';
-import { Invoice } from "../models";
+import { Invoice } from "src/app/models";
+import { AlertService } from "src/app/services";
+import { InvoiceService } from "src/app/services/invoice.service";
 
 @Component({
   selector: "app-invoice-list",
@@ -14,7 +15,7 @@ export class InvoiceListComponent implements OnInit {
   invoices: Observable<Invoice[]>;
 
   constructor(private invoiceService: InvoiceService,
-    private router: Router) {}
+    private router: Router,private alertService: AlertService) {}
 
   ngOnInit() {
     this.reloadData();
@@ -28,7 +29,7 @@ export class InvoiceListComponent implements OnInit {
     this.invoiceService.delete(id)
       .subscribe(
         data => {
-          console.log(data);
+          this.alertService.error('Invoice deleted successfully', true);
           this.reloadData();
         },
         error => console.log(error));

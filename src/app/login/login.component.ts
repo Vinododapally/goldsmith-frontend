@@ -45,20 +45,15 @@ export class LoginComponent implements OnInit {
     onSubmit() {
         this.submitted = true;
         this.loading = true;
-        // if(this.user.username && this.user.password){
         this.authenticationService.login(this.loginForm.value)
             .subscribe(
                 data => {
-                    //this.router.navigate([this.returnUrl]);
-                    console.log('invalid username or password '+data.status);
                     this.router.navigate(['/home']);
                 },
                 error => {
                     this.alertService.error(error);
                     this.loading = false;
                 });
-     }//else{
-    //     alert("please enter the valid inputs");
-    // }
+     }
 }
-//}
+
