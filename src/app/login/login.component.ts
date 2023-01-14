@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit {
     submitted = false;
     returnUrl: string;
     loginForm: FormGroup;
-   
+
 
     constructor(
         private route: ActivatedRoute,
@@ -27,7 +27,6 @@ export class LoginComponent implements OnInit {
         if (this.authenticationService.currentUserValue) {
             this.router.navigate(['/home']);
         }
-       
     }
 
     ngOnInit() {
