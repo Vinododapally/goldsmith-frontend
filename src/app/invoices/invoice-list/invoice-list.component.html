@@ -18,13 +18,12 @@
           <th>Net Weight</th>
           <th>Making Charges</th>
           <th>Actions</th>
-
-          <button (click)="addInvoice()" class="btn btn-info" style="margin-left: 10px" title="Create Invoice">+</button>
+          <button (click)="addInvoice()" class="btn btn-info"  title="Create Invoice">+</button>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let invoice of invoices | async">
-          <td>{{invoice.deliveryDate}}</td>
+          <td>{{invoice.deliveryDate | date : "yyyy/MM/dd HH:mm"}} </td>
           <td>{{invoice.showroom}}</td>
           <td>{{invoice.itemName}}</td>
           <td>{{invoice.grossWeight}}</td>

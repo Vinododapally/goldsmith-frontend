@@ -5,31 +5,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <!-- <style>
-      
-      .split {
-        height: 100%;
-        width: 50%;
-        position: fixed;
-        z-index: 1;
-        top: 0;
-        overflow-x: hidden;
-        padding-top: 100px;
-      }
-      
-      .left {
-        left: 0;
-      }
-      
-      .right {
-        right: 0;
-      }
-      .sub-entry {
-    width: 50%;
-    float: left;
-    }
-      
-      </style> -->
+    
     <style>
     .required-field::after {
     content: "*";
@@ -38,12 +14,10 @@
 .required-alert {
     color: red;
 }
-
     </style>
   </head>
 <h2>Create User</h2><br><br>
 <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-  <!-- <div class="split left"> -->
 <div class="form-row">
     <div class="form-group col-md-6">
         <label for="username" class="required-field">UserName</label>
@@ -92,16 +66,7 @@
     <div class="form-group col-md-10" >
         <button [disabled]="loading" class="btn btn-primary" style="margin-right: 10px" >Register</button>
         <img *ngIf="loading" class="pl-3" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
-        <!-- <a routerLink="/login" class="btn btn-link">Cancel</a> -->
         <button routerLink="/users"  class="btn btn-danger" style="margin-left: 10px;">Cancel</button>
     </div>
-
-<!-- </div> -->
-<!-- <div class="split right"> -->
- <!-- <div class="sub-entry">  
-    <img [src] ="ImagePath" 
-          style="width: 850px; height: 600px; padding-left: 200px;">
- </div> -->
-<!-- </div> -->
 
 </form>

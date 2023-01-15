@@ -2,11 +2,12 @@
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
-import { AuthenticationService, AlertService } from '../services';
-import { InvoiceService } from '../services/invoice.service';
-import { ShowRoomService } from '../services/showroom.service';
+
 import { Observable } from 'rxjs';
-import { ShowRoom } from '../models/showRoom';
+import { ShowRoom } from 'src/app/models/showRoom';
+import { AlertService } from 'src/app/services';
+import { InvoiceService } from 'src/app/services/invoice.service';
+import { ShowRoomService } from 'src/app/services/showroom.service';
 
 
 @Component({templateUrl: 'invoice.component.html'})
@@ -22,15 +23,11 @@ export class InvoiceComponent implements OnInit {
     constructor(
         private formBuilder: FormBuilder,
         private router: Router,
-        private authenticationService: AuthenticationService,
         private invoiceService: InvoiceService,
         private alertService: AlertService,
         private showRoomService: ShowRoomService
     ) {
-        /* if (this.authenticationService.currentUserValue) {
-            this.router.navigate(['/']);
-        } */
-        this.ImagePath = '/assets/images/bg.jpg'
+       
     }
 
     ngOnInit() {

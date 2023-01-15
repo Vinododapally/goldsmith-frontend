@@ -2,8 +2,8 @@
 import { Observable } from "rxjs";
 import { Component, OnInit } from "@angular/core";
 import { Router } from '@angular/router';
-import { UserService } from "../services";
-import { User } from "../models/user";
+import { User } from "src/app/models";
+import { UserService, AlertService } from "src/app/services";
 
 @Component({
   selector: "app-user-list",
@@ -14,7 +14,7 @@ export class UserListComponent implements OnInit {
   users: Observable<User[]>;
 
   constructor(private userService: UserService,
-    private router: Router) {}
+    private router: Router,private alertService: AlertService) {}
 
   ngOnInit() {
     this.reloadData();
@@ -28,7 +28,7 @@ export class UserListComponent implements OnInit {
     this.userService.delete(id)
       .subscribe(
         data => {
-          console.log(data);
+          this.alertService.error('User deleted successfully', true);
           this.reloadData();
         },
         error => console.log(error));

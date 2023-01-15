@@ -2,7 +2,7 @@
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
-import { AuthenticationService, UserService, AlertService } from '../services';
+import { AuthenticationService, UserService, AlertService } from 'src/app/services';
 
 
 @Component({templateUrl: 'register.component.html'})
@@ -10,20 +10,14 @@ export class RegisterComponent implements OnInit {
     registerForm: FormGroup;
     loading = false;
     submitted = false;
-    ImagePath: string;
 
     constructor(
         private formBuilder: FormBuilder,
         private router: Router,
-        private authenticationService: AuthenticationService,
         private userService: UserService,
         private alertService: AlertService
     ) { 
-        // redirect to home if already logged in
-        if (this.authenticationService.currentUserValue) { 
-            //this.router.navigate(['/']);
-        }
-        this.ImagePath = '/assets/images/bg.jpg'
+        
     }
 
     ngOnInit() {
@@ -40,6 +34,9 @@ export class RegisterComponent implements OnInit {
     get f() { return this.registerForm.controls; }
 
     onSubmit() {
+        if(this.userService.getByUserName(this.registerForm.get("username").value)){
+           return  this.alertService.error('User name is already exist', true);
+        }
         this.submitted = true;
 
         // stop here if form is invalid
@@ -52,7 +49,7 @@ export class RegisterComponent implements OnInit {
             .pipe(first())
             .subscribe(
                 data => {
-                    this.alertService.success('Registration successful', true);
+                    this.alertService.success('User Created successfully', true);
                     this.router.navigate(['/users']);
                 },
                 error => {

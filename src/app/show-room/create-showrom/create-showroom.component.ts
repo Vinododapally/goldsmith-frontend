@@ -12,7 +12,6 @@ export class CreateShowRoomComponent implements OnInit {
     showRoomForm: FormGroup;
     loading = false;
     submitted = false;
-    ImagePath: string;
 
     constructor(
         private formBuilder: FormBuilder,
@@ -21,11 +20,7 @@ export class CreateShowRoomComponent implements OnInit {
         private showRoomService: ShowRoomService,
         private alertService: AlertService
     ) { 
-        // redirect to home if already logged in
-        if (this.authenticationService.currentUserValue) { 
-            //this.router.navigate(['/']);
-        }
-        this.ImagePath = '/assets/images/bg.jpg'
+       
     }
 
     ngOnInit() {
@@ -48,13 +43,12 @@ export class CreateShowRoomComponent implements OnInit {
         if (this.showRoomForm.invalid) {
             return;
         }
-        console.log(JSON.stringify(this.showRoomForm.value));
         this.loading = true;
-        this.showRoomService.register(this.showRoomForm.value)
+        this.showRoomService.create(this.showRoomForm.value)
             .pipe(first())
             .subscribe(
                 data => {
-                    this.alertService.success('Registration successful', true);
+                    this.alertService.success('Showroom added successfully', true);
                     this.router.navigate(['/showrooms']);
                 },
                 error => {

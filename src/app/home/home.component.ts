@@ -8,7 +8,7 @@ import { AuthenticationService, UserService } from '../services';
 
 @Component({   selector: 'app-home',templateUrl: 'home.component.html' })
 export class HomeComponent implements OnInit, OnDestroy {
-    currentUser: String;
+    currentUser: User;
     currentUserSubscription: Subscription;
     users: User[] = [];
 
@@ -18,11 +18,9 @@ export class HomeComponent implements OnInit, OnDestroy {
         private router: Router,
     
     ) {
-        // this.currentUserSubscription = this.authenticationService.currentUser.subscribe(user => {
-        //     console.log('stored user?'+JSON.stringify(user));
-        //     this.currentUser = JSON.stringify(user);
-        // });
-        this.currentUser=localStorage.getItem('currentUser')
+        this.currentUserSubscription = this.authenticationService.currentUser.subscribe(user => {
+            this.currentUser = user;
+        });
     }
 
     ngOnInit() {
@@ -31,7 +29,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
     ngOnDestroy() {
         // unsubscribe to ensure no memory leaks
-        //this.currentUserSubscription.unsubscribe();
+        this.currentUserSubscription.unsubscribe();
     }
 
     deleteUser(id: number) {

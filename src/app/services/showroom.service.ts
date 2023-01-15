@@ -17,8 +17,8 @@ export class ShowRoomService {
         return this.http.get(`${this.apiUrl}/showroom/${id}`);
     }
 
-    register(user: User) {
-        return this.http.post(`${this.apiUrl}/showroom`, user);
+    create(showRoom: ShowRoom) {
+        return this.http.post(`${this.apiUrl}/showroom`, showRoom);
     }
 
     update(showRoom: ShowRoom) {
