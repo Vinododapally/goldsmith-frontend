@@ -1,9 +1,35 @@
 <div class="panel panel-primary">
   <div class="panel-heading">
-    <h2>Invoices</h2>
+    <h5>Invoices</h5>
+    <div class="pull-right"><button  (click)="exportToExcelFun()" class="btn btn-info" >Export</button></div>
+    <div class="pull-right" style="padding-right: 15px;"><button    (click)="addInvoice()" class="btn btn-info"  title="Create Invoice">+</button></div>
   </div>
   <div class="panel-body">
-    <table class="table table-striped">
+    <label >Show Room</label>
+    <input
+          type="text"
+          [(ngModel)]="showroom"
+          placeholder="Show Room"
+          (input)="onFilterChange($event, 'showroom')"
+        />
+    
+        <label >From Date</label>
+        <input
+          type="text"
+          [(ngModel)]="deliveryDate"
+          placeholder="From Date"
+          (input)="onFilterChangeForDate($event, 'deliveryDate')"
+        />
+       
+        <label >To Date</label>
+        <input
+          type="text"
+          [(ngModel)]="deliveryDate"
+          placeholder="To Date"
+          (input)="onFilterChangeForDate($event, 'deliveryDate')"
+        />
+    <table class="table">
+      
       <thead>
         <tr>
           <th>Delivery Date</th>
@@ -18,12 +44,13 @@
           <th>Net Weight</th>
           <th>Making Charges</th>
           <th>Actions</th>
-          <button (click)="addInvoice()" class="btn btn-info"  title="Create Invoice">+</button>
+          <!-- <th><button (click)="addInvoice()" class="btn btn-info"  title="Create Invoice">+</button></th>  
+           <th><button (click)="exportToExcelFun()" class="btn btn-info" >Export</button></th>    -->
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let invoice of invoices | async">
-          <td>{{invoice.deliveryDate | date : "yyyy/MM/dd HH:mm"}} </td>
+        <tr *ngFor="let invoice of returnedArray">
+          <td>{{invoice.deliveryDate | date : "yyyy/MM/dd"}} </td>
           <td>{{invoice.showroom}}</td>
           <td>{{invoice.itemName}}</td>
           <td>{{invoice.grossWeight}}</td>
@@ -36,7 +63,7 @@
           <td>{{invoice.makingCharges}}</td>
            <div class="col">
           <td ><button (click)="deleteUser(invoice.refId)" class="btn btn-danger" title="Delete" style="font-size: 10px;">x</button>
-          <td style="padding-left: 20px;"><button (click)="updateUser(invoice.refId)" class="btn btn-info" style="font-size: 10px;">edit</button></td>
+          <!-- <td style="padding-left: 20px;"><button (click)="updateUser(invoice.refId)" class="btn btn-info" style="font-size: 10px;">edit</button></td> -->
           <td style="padding-left: 20px; padding-top: 6px; padding-bottom: 6px;"> <button (click)="userDetails(invoice.refId)" class="btn btn-info" style="font-size: 10px;">details</button>
           </td>
           </div>
@@ -44,5 +71,36 @@
       </tbody>
     </table>
   </div>
+  <pagination
+  *ngIf="users.length != 0"
+  [maxSize]="10"
+  [boundaryLinks]="true"
+  [totalItems]="users.length"
+  [itemsPerPage]="selectedItemsPerPage"
+  previousText="&lsaquo;"
+  nextText="&rsaquo;"
+  firstText="&laquo;"
+  lastText="&raquo;"
+  (pageChanged)="pageChanged($event)"
+></pagination>
+<h5>
+  {{
+  startCount +
+  1 +
+  '-' +
+  (endCount > users.length ? users.length : endCount) +
+  ' of ' +
+  users.length
+  }}
+</h5>
+
+<span>
+  <label>Items Per Page</label>
+  <select (change)="onChangePagination($event)">
+    <option [value]="item" *ngFor="let item of itemsPerPage">
+      {{ item }}
+    </option>
+  </select>
+</span>
 </div>
 

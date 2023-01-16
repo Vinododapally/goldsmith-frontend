@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { DataComponent } from './data/data.component';
 import { AuthGuard } from './guards';
 import { HomeComponent } from './home/home.component';
 import { InvoiceComponent } from './invoices/invoice';
@@ -19,6 +20,7 @@ const routes: Routes = [
      { path: 'invoices', component: InvoiceListComponent,canActivate: [AuthGuard] },
      { path: 'showroom', component: CreateShowRoomComponent,canActivate: [AuthGuard] },
      { path: 'showrooms', component: ShowRoomListComponent,canActivate: [AuthGuard] },
+     { path: 'data', component: DataComponent},
 
      // otherwise redirect to home
     { path: '**', redirectTo: '' }

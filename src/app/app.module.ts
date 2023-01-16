@@ -15,17 +15,22 @@ import { InvoiceListComponent } from './invoices/invoice-list/invoice-list.compo
 import { RegisterComponent } from './users/register';
 import { UserListComponent } from './users/user-list/user-list.component';
 import { JwtInterceptor, ErrorInterceptor } from './helper';
+import { PaginationModule } from 'ngx-bootstrap/pagination';
+import { DataComponent } from './data/data.component';
+import { ExportToExcelService } from './services/export-to-excel.service';
+import { TodosService } from './services/todos.service';
 
 
 
 
 @NgModule({
-  imports: [ 
+  imports: [
          BrowserModule,
          ReactiveFormsModule,
          HttpClientModule,
          AppRoutingModule,
          FormsModule,
+         PaginationModule.forRoot()
      ],
      declarations: [
          AppComponent,
@@ -37,12 +42,14 @@ import { JwtInterceptor, ErrorInterceptor } from './helper';
          InvoiceListComponent,
          UserListComponent,
          CreateShowRoomComponent,
-         ShowRoomListComponent
-        
+         ShowRoomListComponent,
+         DataComponent
+
      ],
      providers: [
-      { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
-      { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
+     TodosService, ExportToExcelService,
+      // { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+      // { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
     ],
   bootstrap: [AppComponent]
 })
