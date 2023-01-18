@@ -8,7 +8,9 @@ import { InvoiceListComponent } from './invoices/invoice-list/invoice-list.compo
 import { LoginComponent } from './login';
 import { CreateShowRoomComponent } from './show-room/create-showrom/create-showroom.component';
 import { ShowRoomListComponent } from './show-room/showroom-list/showroom-list.component';
+import { UpdateShowRoomComponent } from './show-room/update-showroom/update-showroom.component';
 import { RegisterComponent } from './users/register';
+import { UpdateUserComponent } from './users/update-user/update-user.component';
 import { UserListComponent } from './users/user-list/user-list.component';
 
 const routes: Routes = [
@@ -20,6 +22,8 @@ const routes: Routes = [
      { path: 'invoices', component: InvoiceListComponent,canActivate: [AuthGuard] },
      { path: 'showroom', component: CreateShowRoomComponent,canActivate: [AuthGuard] },
      { path: 'showrooms', component: ShowRoomListComponent,canActivate: [AuthGuard] },
+     { path: 'updateUser/:id', component: UpdateUserComponent,canActivate: [AuthGuard] },
+     { path: 'updateshowroom/:id', component: UpdateShowRoomComponent,canActivate: [AuthGuard] },
      { path: 'data', component: DataComponent},
 
      // otherwise redirect to home

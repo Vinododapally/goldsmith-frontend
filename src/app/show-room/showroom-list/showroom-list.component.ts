@@ -58,7 +58,7 @@ export class ShowRoomListComponent implements OnInit {
   }
 
   updateShowRoom(id: number){
-    this.router.navigate(['update', id]);
+    this.router.navigate(['updateshowroom', id]);
   }
   addShowRoom(){
   this.router.navigate(['showroom']);

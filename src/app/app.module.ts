@@ -19,6 +19,8 @@ import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { DataComponent } from './data/data.component';
 import { ExportToExcelService } from './services/export-to-excel.service';
 import { TodosService } from './services/todos.service';
+import { UpdateUserComponent } from './users/update-user/update-user.component';
+import { UpdateShowRoomComponent } from './show-room/update-showroom/update-showroom.component';
 
 
 
@@ -30,7 +32,8 @@ import { TodosService } from './services/todos.service';
          HttpClientModule,
          AppRoutingModule,
          FormsModule,
-         PaginationModule.forRoot()
+         PaginationModule.forRoot(),
+         //AvatarModule
      ],
      declarations: [
          AppComponent,
@@ -43,7 +46,9 @@ import { TodosService } from './services/todos.service';
          UserListComponent,
          CreateShowRoomComponent,
          ShowRoomListComponent,
-         DataComponent
+         DataComponent,
+         UpdateUserComponent,
+         UpdateShowRoomComponent
 
      ],
      providers: [
