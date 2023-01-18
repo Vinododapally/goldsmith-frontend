@@ -1,11 +1,40 @@
 <div class="panel panel-primary">
   <div class="panel-heading">
-    <h2>Invoices</h2>
+    <h5>Invoices</h5>
   </div>
+<div>
+  <div class="pull-right" style="padding-right: 25px; padding-top: 15px; padding-bottom: 15px; "><button  (click)="exportToExcelFun()" class="btn btn-info" style="font-size: 10px;" >Export</button></div>
+  <div class="pull-right" style="padding-right: 30px; padding-top: 15px;"><button    (click)="addInvoice()" class="btn btn-info"  title="Create Invoice" style="font-size: 10px;">+</button></div>
+  <div class="pull-right" style="padding-right: 40px; padding-top: 15px; "><button    (click)="reloadData()" class="btn btn-danger"  style="font-size: 10px;">Clear Filters</button></div> 
+  <div class="pull-right" style="padding-right: 100px; padding-top: 15px;"><button    (click)="filterInvoices()" class="btn btn-info"  style="font-size: 10px;">Go..</button></div>
+   
+</div>
+<div style="padding-left: 20px; padding-top: 15px;">
+  <label>Show Room</label>&nbsp;
+  <input
+        type="text"
+        [(ngModel)]="showroom"
+        placeholder="Show Room"
+      />&nbsp;&nbsp;&nbsp;&nbsp;
+  <label >From Date</label>&nbsp;
+            <input
+              type="date"
+              [(ngModel)]="fromDate"
+              placeholder="From Date"
+            />&nbsp;&nbsp;&nbsp;&nbsp;
+  <label >To Date</label>&nbsp;
+            <input
+               type="date"
+               [(ngModel)]="toDate"
+               placeholder="To Date"
+             />       
+             
+</div>
   <div class="panel-body">
-    <table class="table table-striped">
+<div class="table">
+    <table>
       <thead>
-        <tr>
+      <tr>
           <th>Delivery Date</th>
           <th>Show Room</th>
           <th>Item Name</th>
@@ -18,12 +47,14 @@
           <th>Net Weight</th>
           <th>Making Charges</th>
           <th>Actions</th>
-          <button (click)="addInvoice()" class="btn btn-info"  title="Create Invoice">+</button>
-        </tr>
+          <th></th>
+          <!-- <th><button (click)="addInvoice()" class="btn btn-info"  title="Create Invoice">+</button></th>  
+           <th><button (click)="exportToExcelFun()" class="btn btn-info" >Export</button></th>    -->
+      </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let invoice of invoices | async">
-          <td>{{invoice.deliveryDate | date : "yyyy/MM/dd HH:mm"}} </td>
+      <tr *ngFor="let invoice of returnedInvoiceArray">
+          <td>{{invoice.deliveryDate | date : "yyyy/MM/dd"}} </td>
           <td>{{invoice.showroom}}</td>
           <td>{{invoice.itemName}}</td>
           <td>{{invoice.grossWeight}}</td>
@@ -34,15 +65,55 @@
           <td>{{invoice.stoneWeightInGrams}}</td>
           <td>{{invoice.netWeight}}</td>
           <td>{{invoice.makingCharges}}</td>
-           <div class="col">
-          <td ><button (click)="deleteUser(invoice.refId)" class="btn btn-danger" title="Delete" style="font-size: 10px;">x</button>
-          <td style="padding-left: 20px;"><button (click)="updateUser(invoice.refId)" class="btn btn-info" style="font-size: 10px;">edit</button></td>
-          <td style="padding-left: 20px; padding-top: 6px; padding-bottom: 6px;"> <button (click)="userDetails(invoice.refId)" class="btn btn-info" style="font-size: 10px;">details</button>
+           <!-- <div class="col"> -->
+          <td ><button (click)="deleteInvoice(invoice.refId)" class="btn btn-danger" title="Delete" style="font-size: 10px;">x</button>
+          <td style="padding-top: 6px; padding-bottom: 6px;"> <button (click)="invoiceDetails(invoice.refId)" class="btn btn-info" style="font-size: 10px;">details</button>
           </td>
-          </div>
-        </tr>
+          <!-- </div> -->
+      </tr>
       </tbody>
     </table>
+</div>    
+  </div>
+  <div>
+    <div class="pull-right" style="padding-right: 30px; padding-top: 20px;">
+      <span>
+        <label>Items Per Page</label> &nbsp;
+        <select (change)="onChangePagination($event)">
+          <option [value]="item" *ngFor="let item of itemsPerPage">
+            {{ item }}
+          </option>
+        </select>
+      </span>
+      </div>
+    <div class="pull-right" style="padding-right: 25px;  padding-top: 20px;">
+      <h5>
+        {{
+        startCount +
+        1 +
+        ' - ' +
+        (endCount > invoices.length ? invoices.length : endCount) +
+        ' of ' +
+        invoices.length
+        }}
+      </h5>
+      </div>
+  <div class="pull-right" style="padding-right: 25px;">
+  <pagination
+  *ngIf="invoices.length != 0"
+  [maxSize]="10"
+  [boundaryLinks]="true"
+  [totalItems]="invoices.length"
+  [itemsPerPage]="selectedItemsPerPage"
+  previousText="&lsaquo;"
+  nextText="&rsaquo;"
+  firstText="&laquo;"
+  lastText="&raquo;"
+  (pageChanged)="pageChanged($event)"
+></pagination>
+</div>
+
+
   </div>
 </div>
 

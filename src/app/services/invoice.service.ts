@@ -27,4 +27,15 @@ export class InvoiceService {
     delete(id: number) {
         return this.http.delete(`${this.apiUrl}/invoice/${id}`);
     }
+
+    getInvoicesBasedOnTheparams(showroom:String,fromDate:Date,toDate:Date){
+            const object = {
+              showroom : showroom,
+              deliveryDate : fromDate,
+              toDate : toDate
+            }
+        return this.http.post(`${this.apiUrl}/invoice/filters`, object);
+        }
+        
+   
 }
