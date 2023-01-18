@@ -50,7 +50,7 @@ export class UserListComponent implements OnInit {
   }
 
   updateUser(id: number){
-    this.router.navigate(['update', id]);
+    this.router.navigate(['/updateUser', id]);
   }
   addUser(){
   this.router.navigate(['register']);

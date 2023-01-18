@@ -1,7 +1,7 @@
 <div class="container" style="padding-top: 45px; padding-right: 150px; padding-left: 150px;">
   <div class="panel panel-primary">
   <div class="panel-heading">
-    <h5>Users</h5>
+    <h5>Show Rooms</h5>
   </div>
 <div>
   
@@ -45,7 +45,7 @@
           <td>{{showroom.mobileNumber}}</td>
           <td>{{showroom.address}}</td>
           <td ><button (click)="deleteShowRoom(showroom.id)" class="btn btn-danger" title="Delete" style="font-size: 10px;">x</button>
-          <td style="padding-top: 6px; padding-bottom: 6px;"> <button (click)="showRoomDetails(showroom.id)" class="btn btn-info" style="font-size: 10px;">details</button>
+          <td style="padding-top: 6px; padding-bottom: 6px;"> <button (click)="updateShowRoom(showroom.id)" class="btn btn-info" style="font-size: 10px;">edit</button>
           </td>
       </tr>
       </tbody>
