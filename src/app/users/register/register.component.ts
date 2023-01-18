@@ -34,9 +34,14 @@ export class RegisterComponent implements OnInit {
     get f() { return this.registerForm.controls; }
 
     onSubmit() {
-        if(this.userService.getByUserName(this.registerForm.get("username").value)){
-           return  this.alertService.error('User name is already exist', true);
-        }
+        // this.userService.getByUserName(this.registerForm.get("username").value)
+        // .subscribe(
+        //     data => {
+        //         alert(JSON.stringify(data))
+        //         if(data){
+        //             this.alertService.error('User name is already exist', true);
+        //         }
+        //     });
         this.submitted = true;
 
         // stop here if form is invalid

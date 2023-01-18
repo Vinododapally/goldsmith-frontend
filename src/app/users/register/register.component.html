@@ -15,8 +15,13 @@
     color: red;
 }
     </style>
-  </head>
-<h2>Create User</h2><br><br>
+</head>
+<div class="container" style="padding-top: 45px;  padding-right: 150px; padding-left: 150px;">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h5>Create User</h5>
+      </div>
+      <div class="panel-body"> 
 <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
 <div class="form-row">
     <div class="form-group col-md-6">
@@ -70,3 +75,5 @@
     </div>
 
 </form>
+</div>
+</div>
