@@ -1,33 +1,96 @@
-<div class="panel panel-primary">
+<div class="container" style="padding-top: 45px; padding-right: 150px; padding-left: 150px;">
+  <div class="panel panel-primary">
   <div class="panel-heading">
-    <h2>Show Rooms</h2>
+    <h5>Users</h5>
   </div>
+<div>
+  
+  <div class="pull-right" style="padding-right: 50px;  padding-bottom: 10px; padding-top: 10px;"><button    (click)="addShowRoom()" class="btn btn-info"  title="Create showRoom" style="font-size: 10px;">+</button></div>
+  <div class="pull-right" style="padding-right: 95px; padding-top: 15px; "><button    (click)="reloadData()" class="btn btn-danger"  style="font-size: 10px;">Clear Filters</button></div> 
+</div>
+<div style="padding-left: 20px; padding-top: 15px;">
+  <label>Show Room</label>&nbsp;
+  <input
+        type="text"
+        [(ngModel)]="name"
+        placeholder="Show Room"
+        (input)="onFilterChange($event, 'name')"
+      />&nbsp;&nbsp;&nbsp;
+  <label >Contact Name</label>&nbsp;
+            <input
+              type="text"
+              [(ngModel)]="contactName"
+              placeholder="Contact Name"
+              (input)="onFilterChange($event, 'contactName')"
+            />
+             
+</div>
   <div class="panel-body">
-    <table class="table table-striped">
+<div class="table">
+    <table>
       <thead>
-        <tr>
-          <th>Show Room</th>
+      <tr>
+        <th>Show Room</th>
           <th>Contact Name</th>
           <th>Contact Number</th>
           <th>Address</th>
           <th>Actions</th>
-          <button (click)="addShowRoom()" class="btn btn-info" style="margin-left: 10px" title="Create showRoom">+</button>
-        </tr>
+          <th></th>
+      </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let showroom of showrooms | async">
+        <tr *ngFor="let showroom of returnedShowRoomArray">
           <td>{{showroom.name}}</td>
           <td>{{showroom.contactName}}</td>
           <td>{{showroom.mobileNumber}}</td>
           <td>{{showroom.address}}</td>
-           <div >  
-          <td ><button (click)="deleteShowRoom(showroom.id)" class="btn btn-danger" style="font-size: 10px;" title="Delete">x</button>
-          <td style="padding-left: 20px; "><button (click)="updateShowRoom(showroom.id)" class="btn btn-info" style="font-size: 10px;" >edit</button></td>
-          <td style="padding-left: 30px; padding-top: 6px; padding-bottom: 6px;"> <button style="font-size: 10px;"(click)="showRoomDetails(showroom.id)" class="btn btn-info" >details</button>
-           </div>  
-        </tr>
+          <td ><button (click)="deleteShowRoom(showroom.id)" class="btn btn-danger" title="Delete" style="font-size: 10px;">x</button>
+          <td style="padding-top: 6px; padding-bottom: 6px;"> <button (click)="showRoomDetails(showroom.id)" class="btn btn-info" style="font-size: 10px;">details</button>
+          </td>
+      </tr>
       </tbody>
     </table>
+</div>    
   </div>
+  <div>
+    <div class="pull-right" style="padding-right: 30px; padding-top: 20px;">
+      <span>
+        <label>Items Per Page</label> &nbsp;
+        <select (change)="onChangePagination($event)">
+          <option [value]="item" *ngFor="let item of itemsPerPage">
+            {{ item }}
+          </option>
+        </select>
+      </span>
+      </div>
+    <div class="pull-right" style="padding-right: 25px;  padding-top: 20px;">
+      <h5>
+        {{
+        startCount +
+        1 +
+        ' - ' +
+        (endCount > showrooms.length ? showrooms.length : endCount) +
+        ' of ' +
+        showrooms.length
+        }}
+      </h5>
+      </div>
+  <div class="pull-right" style="padding-right: 25px;">
+  <pagination
+  *ngIf="showrooms.length != 0"
+  [maxSize]="10"
+  [boundaryLinks]="true"
+  [totalItems]="showrooms.length"
+  [itemsPerPage]="selectedItemsPerPage"
+  previousText="&lsaquo;"
+  nextText="&rsaquo;"
+  firstText="&laquo;"
+  lastText="&raquo;"
+  (pageChanged)="pageChanged($event)"
+></pagination>
 </div>
 
+
+  </div>
+  </div>
+</div>

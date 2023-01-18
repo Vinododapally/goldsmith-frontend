@@ -1,34 +1,96 @@
-<div class="panel panel-primary">
+<div class="container" style="padding-top: 45px; padding-right: 150px; padding-left: 150px;">
+  <div class="panel panel-primary">
   <div class="panel-heading">
-    <h2>Users</h2>
+    <h5>Users</h5>
   </div>
+<div>
+  
+  <div class="pull-right" style="padding-right: 50px;  padding-bottom: 10px; padding-top: 10px;"><button    (click)="addUser()" class="btn btn-info"  title="Create User" style="font-size: 10px;">+</button></div>
+  <div class="pull-right" style="padding-right: 95px; padding-top: 15px; "><button    (click)="reloadData()" class="btn btn-danger"  style="font-size: 10px;">Clear Filters</button></div> 
+</div>
+<div style="padding-left: 20px; padding-top: 15px;">
+  <label>User Name</label>&nbsp;
+  <input
+        type="text"
+        [(ngModel)]="username"
+        placeholder="User Name"
+        (input)="onFilterChange($event, 'username')"
+      />&nbsp;&nbsp;&nbsp;
+  <label >Mobile Number</label>&nbsp;
+            <input
+              type="number"
+              [(ngModel)]="mobileNumber"
+              placeholder="Mobile Number"
+              (input)="onFilterChange($event, 'mobileNumber')"
+            />
+             
+</div>
   <div class="panel-body">
-    <table class="table table-striped">
+<div class="table">
+    <table>
       <thead>
-        <tr>
-          <th>User Name</th>
-          <th>Mobile Number</th>
-          <th>Email</th>
-          <th>Role</th>
-          <th>Actions</th>
-          <button (click)="addUser()" class="btn btn-info" style="margin-left: 10px" title="Create User">+</button>
-        </tr>
+      <tr>
+        <th>User Name</th>
+        <th>Mobile Number</th>
+        <th>Email</th>
+        <th>Role</th>
+        <th>Actions</th>
+          <th></th>
+      </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let user of users | async">
+        <tr *ngFor="let user of returnedUserArray">
           <td>{{user.username}}</td>
           <td>{{user.mobileNumber}}</td>
           <td>{{user.email}}</td>
           <td>{{user.role}}</td>
-           <div class="col">
-          <td ><button (click)="deleteUser(user.id)" class="btn btn-danger" style="font-size: 10px;" title="Delete">x</button>
-          <td style="padding-left: 20px;"><button (click)="updateUser(user.id)" class="btn btn-info" style="font-size: 10px;">edit</button></td>
-          <td style="padding-left: 20px; padding-top: 6px; padding-bottom: 6px;"> <button (click)="userDetails(user.id)" class="btn btn-info" style="font-size: 10px;">details</button>
+          <td ><button (click)="deleteUser(user.id)" class="btn btn-danger" title="Delete" style="font-size: 10px;">x</button>
+          <td style="padding-top: 6px; padding-bottom: 6px;"> <button (click)="userDetails(user.id)" class="btn btn-info" style="font-size: 10px;">details</button>
           </td>
-          </div>
-        </tr>
+      </tr>
       </tbody>
     </table>
+</div>    
   </div>
+  <div>
+    <div class="pull-right" style="padding-right: 30px; padding-top: 20px;">
+      <span>
+        <label>Items Per Page</label> &nbsp;
+        <select (change)="onChangePagination($event)">
+          <option [value]="item" *ngFor="let item of itemsPerPage">
+            {{ item }}
+          </option>
+        </select>
+      </span>
+      </div>
+    <div class="pull-right" style="padding-right: 25px;  padding-top: 20px;">
+      <h5>
+        {{
+        startCount +
+        1 +
+        ' - ' +
+        (endCount > users.length ? users.length : endCount) +
+        ' of ' +
+        users.length
+        }}
+      </h5>
+      </div>
+  <div class="pull-right" style="padding-right: 25px;">
+  <pagination
+  *ngIf="users.length != 0"
+  [maxSize]="10"
+  [boundaryLinks]="true"
+  [totalItems]="users.length"
+  [itemsPerPage]="selectedItemsPerPage"
+  previousText="&lsaquo;"
+  nextText="&rsaquo;"
+  firstText="&laquo;"
+  lastText="&raquo;"
+  (pageChanged)="pageChanged($event)"
+></pagination>
 </div>
 
+
+  </div>
+  </div>
+</div>

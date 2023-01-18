@@ -14,12 +14,19 @@
     color: red;
 }
     </style>
-  </head>
-<h2>Create Invoice</h2><br><br>
-<form [formGroup]="invoiceForm" (ngSubmit)="onSubmit()">
+</head>
 
+<div class="container" style="padding-top: 45px; padding-right: 150px; padding-left: 150px;">
+  <div class="panel panel-primary">
+
+    <div class="panel-heading">
+        <h5>Create Invoice</h5>
+    </div>
+
+    <div class="panel-body">
+          <form [formGroup]="invoiceForm" (ngSubmit)="onSubmit()">
 <div class="form-row">
-    <div class="form-group col-md-6">
+    <div class="form-group col-md-4">
         <label for="deliveryDate" class="required-field">Delivery Date</label>
         <input type="date" formControlName="deliveryDate" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.deliveryDate.errors }" />
         <div *ngIf="submitted && f.deliveryDate.errors" class="invalid-feedback">
@@ -27,7 +34,7 @@
         </div>
     </div>
 
-    <div class="form-group col-md-6">
+    <div class="form-group col-md-4">
         <label for="orderNumber" class="required-field">Order No</label>
         <input type="number" formControlName="orderNumber" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.orderNumber.errors }" />
         <div *ngIf="submitted && f.orderNumber.errors" class="invalid-feedback">
@@ -37,7 +44,7 @@
 </div>
 
 <div class="form-row">
-    <div class="form-group col-md-6">
+    <div class="form-group col-md-4">
         <label for="showroom" class="required-field">Show Room</label>
         <select class="custom-select"  formControlName="showroom" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.showroom.errors }">
             <option value={{showroom.name}} *ngFor="let showroom of showrooms | async">{{showroom.name}}</option>
@@ -46,7 +53,7 @@
             <div *ngIf="f.showroom.errors.required" class="required-alert">Show Room is required</div>
         </div>
     </div>
-    <div class="form-group col-md-6">
+    <div class="form-group col-md-4">
         <label for="itemName" class="required-field">ItemName</label>
         <input type="text" formControlName="itemName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.itemName.errors }" />
         <div *ngIf="submitted && f.itemName.errors" class="invalid-feedback">
@@ -56,7 +63,7 @@
 </div>
 
 <div class="form-row">
-    <div class="form-group col-md-6">
+    <div class="form-group col-md-4">
         <label for="grossWeight" class="required-field">Gross Weight</label>
         <input type="number" formControlName="grossWeight" id="grossWeight" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.grossWeight.errors }" />
         <div *ngIf="submitted && f.grossWeight.errors" class="invalid-feedback">
@@ -64,7 +71,7 @@
         </div>
     </div>
 
-    <div class="form-group col-md-6">
+    <div class="form-group col-md-4">
         <label for="totalStones" class="required-field">Total Stones</label>
         <input type="number" formControlName="totalStones" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.totalStones.errors }" />
         <div *ngIf="submitted && f.totalStones.errors" class="invalid-feedback">
@@ -74,27 +81,27 @@
 
 </div>
   <div class="form-row">
-    <div class="form-group col-md-6">
+    <div class="form-group col-md-4">
       <label for="stoneWeightInCarat" class="required-field">stoneWeight(Carat)</label>
       <input type="number" (ngModelChange) = onChange($event) formControlName="stoneWeightInCarat" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.stoneWeightInCarat.errors }" />
       <div *ngIf="submitted && f.stoneWeightInCarat.errors" class="invalid-feedback">
         <div *ngIf="f.stoneWeightInCarat.errors.required" class="required-alert">Gold(92%) is required</div>
       </div>
     </div>
-    <div class="form-group col-md-6">
+    <div class="form-group col-md-4">
       <label for="stoneWeightInGrams" class="required-field">stoneWeight(Grams)</label>
       <input disabled type="number" formControlName="stoneWeightInGrams" id="stoneWeightInGrams" class="form-control" />
     </div>
   </div>
 <div class="form-row">
-    <div class="form-group col-md-6">
+    <div class="form-group col-md-4">
         <label for="gold92Per" class="required-field">Gold(92%)</label>
         <input disabled type="number" formControlName="gold92Per" id="gold92Per" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.gold92Per.errors }" />
         <div *ngIf="submitted && f.gold92Per.errors" class="invalid-feedback">
             <div *ngIf="f.gold92Per.errors.required" class="required-alert">Gold(92%) is required</div>
         </div>
     </div>
-    <div class="form-group col-md-6">
+    <div class="form-group col-md-4">
         <label for="gold12Per" class="required-field">Gold(12%)</label>
         <input disabled type="number" formControlName="gold12Per" id="gold12Per" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.gold12Per.errors }" />
         <div *ngIf="submitted && f.gold12Per.errors" class="invalid-feedback">
@@ -118,4 +125,7 @@
         <img *ngIf="loading" class="pl-3" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
         <button routerLink="/invoices"  class="btn btn-danger" style="margin-left: 10px;">Cancel</button>
     </div>
-</form>
+        </form>
+    </div>
+  </div>
+</div>
