@@ -5,6 +5,7 @@ import { AuthGuard } from './guards';
 import { HomeComponent } from './home/home.component';
 import { InvoiceComponent } from './invoices/invoice';
 import { InvoiceListComponent } from './invoices/invoice-list/invoice-list.component';
+import { UpdateInvoiceComponent } from './invoices/update-invoice/update-invoice.component';
 import { LoginComponent } from './login';
 import { CreateShowRoomComponent } from './show-room/create-showrom/create-showroom.component';
 import { ShowRoomListComponent } from './show-room/showroom-list/showroom-list.component';
@@ -24,6 +25,7 @@ const routes: Routes = [
      { path: 'showrooms', component: ShowRoomListComponent,canActivate: [AuthGuard] },
      { path: 'updateUser/:id', component: UpdateUserComponent,canActivate: [AuthGuard] },
      { path: 'updateshowroom/:id', component: UpdateShowRoomComponent,canActivate: [AuthGuard] },
+     { path: 'updateinvoice/:id', component: UpdateInvoiceComponent,canActivate: [AuthGuard] },
      { path: 'data', component: DataComponent},
 
      // otherwise redirect to home

@@ -29,7 +29,7 @@ updateUser() {
 this.userService.update(this.user)
 .subscribe(data => {
 this.user = new User();
-this.alertService.success('User Created successfully', true);
+this.alertService.success('User Updated successfully', true);
 this.gotoList();
 }, error => console.log(error));
 }
