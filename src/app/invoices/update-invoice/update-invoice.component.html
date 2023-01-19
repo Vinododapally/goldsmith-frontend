@@ -1,0 +1,93 @@
+
+<div class="container" style="padding-top: 45px;  padding-right: 150px; padding-left: 150px;">
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h5>Update Invoice Details</h5>
+  </div>
+  <div class="panel-body">
+  <form (ngSubmit)="onSubmit()">
+
+    <div class="form-row">
+    <div class="form-group col-md-4">
+      <label for="deliveryDate">Delivery Date</label>
+      <input type="date" class="form-control" id="deliveryDate" required [(ngModel)]="invoice.deliveryDate"  required name="deliveryDate">
+    </div>
+
+    <div class="form-group col-md-4">
+      <label for="orderNumber">orderNumber</label>
+      <input  type="number" class="form-control" id="orderNumber" required [(ngModel)]="invoice.orderNumber" name="orderNumber">
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-md-4">
+      <label for="showroom">Show Room</label>
+      <input disabled type="text" class="form-control" id="showroom" required [(ngModel)]="invoice.showroom" name="showroom">
+    </div>
+
+    <div class="form-group col-md-4">
+      <label for="itemName">ItemName</label>
+      <input type="text" class="form-control" id="itemName" required [(ngModel)]="invoice.itemName" name="itemName">
+    </div>
+  </div>
+
+  
+  <div class="form-row">
+    <div class="form-group col-md-4">
+      <label for="grossWeight">Gross Weight</label>
+      <input type="number" class="form-control" id="grossWeight" required [(ngModel)]="invoice.grossWeight" name="grossWeight">
+    </div>
+
+    <div class="form-group col-md-4">
+      <label for="totalStones">Total Stones</label>
+      <input type="number" class="form-control" id="totalStones" required [(ngModel)]="invoice.totalStones" name="totalStones">
+    </div>
+  </div>
+
+  
+  <div class="form-row">
+    <div class="form-group col-md-4">
+      <label for="stoneWeightInCarat">Stone Weight(Carat)</label>
+      <input type="number" class="form-control" id="stoneWeightInCarat" required [(ngModel)]="invoice.stoneWeightInCarat" name="stoneWeightInCarat">
+    </div>
+
+    <div class="form-group col-md-4">
+      <label for="stoneWeightInGrams">stone Weight(Grams)</label>
+      <input disabled type="number" class="form-control" id="stoneWeightInGrams" required [(ngModel)]="invoice.stoneWeightInGrams" name="stoneWeightInGrams">
+    </div>
+  </div>
+
+    
+  <div class="form-row">
+    <div class="form-group col-md-4">
+      <label for="gold92Per">Gold(92%)</label>
+      <input disabled type="number" class="form-control" id="gold92Per" required [(ngModel)]="invoice.gold92Per" name="gold92Per">
+    </div>
+
+    <div class="form-group col-md-4">
+      <label for="gold12Per">Gold(12%)</label>
+      <input disabled  type="number" class="form-control" id="gold12Per" required [(ngModel)]="invoice.gold12Per" name="gold12Per">
+    </div>
+  </div>
+
+    
+  <div class="form-row">
+    <div class="form-group col-md-4">
+      <label for="netWeight">Net Weight</label>
+      <input disabled type="number" class="form-control" id="netWeight" required [(ngModel)]="invoice.netWeight" name="netWeight">
+    </div>
+
+    <div class="form-group col-md-4">
+      <label for="makingCharges">Making Charges</label>
+      <input disabled type="number" class="form-control" id="makingCharges" required [(ngModel)]="invoice.makingCharges" name="makingCharges">
+    </div>
+  </div>
+
+    <div  class="form-group col-md-4" class="pull-right" style="padding-right: 100px;">
+    <button type="submit" class="btn btn-success">Update</button>&nbsp;&nbsp;
+    <button routerLink="/invoices" class="btn btn-danger">Cancel</button>
+  </div>
+  </form>
+</div>
+</div>
+</div>

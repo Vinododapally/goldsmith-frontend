@@ -21,6 +21,7 @@ import { ExportToExcelService } from './services/export-to-excel.service';
 import { TodosService } from './services/todos.service';
 import { UpdateUserComponent } from './users/update-user/update-user.component';
 import { UpdateShowRoomComponent } from './show-room/update-showroom/update-showroom.component';
+import { UpdateInvoiceComponent } from './invoices/update-invoice/update-invoice.component';
 
 
 
@@ -48,7 +49,8 @@ import { UpdateShowRoomComponent } from './show-room/update-showroom/update-show
          ShowRoomListComponent,
          DataComponent,
          UpdateUserComponent,
-         UpdateShowRoomComponent
+         UpdateShowRoomComponent,
+         UpdateInvoiceComponent
 
      ],
      providers: [
