@@ -22,6 +22,7 @@ import { TodosService } from './services/todos.service';
 import { UpdateUserComponent } from './users/update-user/update-user.component';
 import { UpdateShowRoomComponent } from './show-room/update-showroom/update-showroom.component';
 import { UpdateInvoiceComponent } from './invoices/update-invoice/update-invoice.component';
+import { FileUploadComponent } from './file-upload/file-upload.component';
 
 
 
@@ -50,7 +51,8 @@ import { UpdateInvoiceComponent } from './invoices/update-invoice/update-invoice
          DataComponent,
          UpdateUserComponent,
          UpdateShowRoomComponent,
-         UpdateInvoiceComponent
+         UpdateInvoiceComponent,
+         FileUploadComponent
 
      ],
      providers: [

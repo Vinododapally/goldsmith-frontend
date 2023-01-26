@@ -4,6 +4,7 @@ import { User } from '../models';
 
 @Injectable({ providedIn: 'root' })
 export class UserService {
+   
     constructor(private http: HttpClient) { }
 
     private apiUrl = "http://localhost:8081/api"
@@ -30,5 +31,9 @@ export class UserService {
 
     getByUserName(name: String) {
         return this.http.get(`${this.apiUrl}/user/${name}`);
+    }
+
+    upload(uploadImageData:any,name:string){
+       return this.http.post(`${this.apiUrl}/user/upload/${name}`, uploadImageData, { observe: 'response' })
     }
 }

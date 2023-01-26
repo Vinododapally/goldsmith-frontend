@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { DataComponent } from './data/data.component';
+import { FileUploadComponent } from './file-upload/file-upload.component';
 import { AuthGuard } from './guards';
 import { HomeComponent } from './home/home.component';
 import { InvoiceComponent } from './invoices/invoice';
@@ -26,6 +27,7 @@ const routes: Routes = [
      { path: 'updateUser/:id', component: UpdateUserComponent,canActivate: [AuthGuard] },
      { path: 'updateshowroom/:id', component: UpdateShowRoomComponent,canActivate: [AuthGuard] },
      { path: 'updateinvoice/:id', component: UpdateInvoiceComponent,canActivate: [AuthGuard] },
+     { path: 'upload', component: FileUploadComponent,canActivate: [AuthGuard] },
      { path: 'data', component: DataComponent},
 
      // otherwise redirect to home
