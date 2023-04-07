@@ -40,7 +40,27 @@ module.exports = {
         splitChunks: {
             chunks: 'all',
         },
-        runtimeChunk: true
+        runtimeChunk: true,
+        minimizer: [new UglifyJsPlugin({
+              uglifyOptions: {
+                compress: {
+                  inline: 1,
+                  keep_fnames: true
+                },
+                mangle: {
+                  keep_fnames: true
+                }
+              }
+            })],
+        minimizer: new TerserPlugin({
+                terserOptions: {
+                  mangle: false,
+                  output: {
+                    beautify: true
+                  }
+                },
+                sourceMap: false
+              })
     },
     devServer: {
         historyApiFallback: true

@@ -10,7 +10,7 @@ import { User } from '../models';
 export class AuthenticationService {
     private currentUserSubject: BehaviorSubject<User>;
     public currentUser: Observable<User>;
-      private apiUrl = "http://localhost:8081"
+      private apiUrl = "http://shirngarjewellers-env.eba-smazfu8u.ap-northeast-1.elasticbeanstalk.com"
 
    constructor(private http: HttpClient) {
         this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));

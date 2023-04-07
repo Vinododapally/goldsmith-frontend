@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { of } from 'rxjs';
 import * as FileSaver from 'file-saver';
-import * as Excel from 'exceljs/dist/exceljs.min.js';
+import * as Excel from 'exceljs/dist/exceljs';
 
 const EXCEL_TYPE =
   'application/vnd.openxmlformatsofficedocument.spreadsheetml.sheet;charset=UTF-8';

@@ -33,7 +33,7 @@ export class InvoiceListComponent implements OnInit {
  fromDate: any;
  toDate: any;
  currentDate = new Date();
- sheetName ='Invoice-'+this.currentDate;
+ sheetName ='Invoice';
 
   constructor(private invoiceService: InvoiceService,
     private router: Router,private alertService: AlertService,

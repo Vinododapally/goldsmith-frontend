@@ -7,7 +7,7 @@ import { ShowRoom } from '../models/showRoom';
 export class ShowRoomService {
     constructor(private http: HttpClient) { }
 
-    private apiUrl = "http://localhost:8081/api"
+    private apiUrl = "http://shirngarjewellers-env.eba-smazfu8u.ap-northeast-1.elasticbeanstalk.com/api"
 
     getAll() {
         return this.http.get<ShowRoom[]>(`${this.apiUrl}/showrooms`);
