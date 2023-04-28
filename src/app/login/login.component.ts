@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit {
     submitted = false;
     returnUrl: string;
     loginForm: FormGroup;
-
+    errorMessage: String;
 
     constructor(
         private route: ActivatedRoute,
@@ -44,15 +44,22 @@ export class LoginComponent implements OnInit {
     onSubmit() {
         this.submitted = true;
         this.loading = true;
+        if(this.loginForm.value.username != "" && this.loginForm.value.password != "") {
+//         alert(JSON.stringify(this.loginForm.value))
         this.authenticationService.login(this.loginForm.value)
-            .subscribe(
-                data => {
-                    this.router.navigate(['/home']);
-                },
-                error => {
-                    this.alertService.error(error);
-                    this.loading = false;
-                });
+                    .subscribe(
+                        data => {
+                        if(data.errorMessage) {
+                        this.errorMessage = data.errorMessage
+                        }
+                            this.router.navigate(['/home']);
+                        },
+                        error => {
+                            this.alertService.error(error);
+                            this.loading = false;
+                        });
+        }
+
      }
 }
 

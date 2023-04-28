@@ -21,9 +21,10 @@
     <input type="password" placeholder="Password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }"/>
     <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
       <div *ngIf="f.password.errors.required" class="required-alert">required</div>
-      <div *ngIf="f.password.errors.minlength" class="required-alert">Password must be at least 6 characters</div>
+<!--      <div *ngIf="f.password.errors.minlength" class="required-alert">Password must be at least 6 characters</div>-->
   </div>
-   </div>
+    <div *ngIf="errorMessage" class="required-alert">{{errorMessage}}</div>
+  </div>
 
   <div class="form-field">
     <button class="btn" type="submit">Log in</button>

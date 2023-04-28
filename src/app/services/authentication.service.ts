@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { User } from '../models';
+import { AlertService } from '../services';
 
 
 
@@ -12,7 +13,7 @@ export class AuthenticationService {
     public currentUser: Observable<User>;
       private apiUrl = "http://localhost:8081"
 
-   constructor(private http: HttpClient) {
+   constructor(private http: HttpClient, private alertService: AlertService) {
         this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
         this.currentUser = this.currentUserSubject.asObservable();
     }
@@ -23,7 +24,7 @@ export class AuthenticationService {
     login(user:User) {
         const username=user.username;
         const password=user.password;
-           
+
         return this.http.post<any>(`${this.apiUrl}/authenticate`, {username, password })
             .pipe(map(user => {
                // login successful if there's a jwt token in the response
