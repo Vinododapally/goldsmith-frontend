@@ -6,7 +6,7 @@ import { User } from '../models';
 export class UserService {
     constructor(private http: HttpClient) { }
 
-    private apiUrl = "http://localhost:8081/api"
+    private apiUrl = "http://localhost:8080/goldsmith/api"
 
     getAll() {
         return this.http.get<User[]>(`${this.apiUrl}/users`);

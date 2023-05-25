@@ -7,7 +7,7 @@ import { ShowRoom } from '../models/showRoom';
 export class ShowRoomService {
     constructor(private http: HttpClient) { }
 
-    private apiUrl = "http://localhost:8081/api"
+    private apiUrl = "http://localhost:8080/goldsmith/api"
 
     getAll() {
         return this.http.get<ShowRoom[]>(`${this.apiUrl}/showrooms`);

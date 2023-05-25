@@ -6,7 +6,7 @@ import { Invoice, User } from '../models';
 export class InvoiceService {
     constructor(private http: HttpClient) { }
 
-    private apiUrl = "http://localhost:8081/api"
+    private apiUrl = "http://localhost:8080/goldsmith/api"
 
     getAll() {
         return this.http.get<Invoice[]>(`${this.apiUrl}/invoices`);
@@ -36,6 +36,6 @@ export class InvoiceService {
             }
         return this.http.post(`${this.apiUrl}/invoice/filters`, object);
         }
-        
-   
+
+
 }

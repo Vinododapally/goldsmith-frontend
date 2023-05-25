@@ -11,7 +11,7 @@ import { AlertService } from '../services';
 export class AuthenticationService {
     private currentUserSubject: BehaviorSubject<User>;
     public currentUser: Observable<User>;
-      private apiUrl = "http://localhost:8081"
+      private apiUrl = "http://localhost:8080/goldsmith"
 
    constructor(private http: HttpClient, private alertService: AlertService) {
         this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
