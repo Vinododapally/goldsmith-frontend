@@ -4,14 +4,14 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { User } from '../models';
 import { AlertService } from '../services';
-
+import { baseurl } from './commonConfig';
 
 
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService {
     private currentUserSubject: BehaviorSubject<User>;
     public currentUser: Observable<User>;
-      private apiUrl = "http://localhost:8080/goldsmith"
+    private apiUrl = baseurl;
 
    constructor(private http: HttpClient, private alertService: AlertService) {
         this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));

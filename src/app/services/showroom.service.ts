@@ -2,12 +2,13 @@
 import { HttpClient } from '@angular/common/http';
 import { User } from '../models';
 import { ShowRoom } from '../models/showRoom';
+import { baseurl } from './commonConfig';
 
 @Injectable({ providedIn: 'root' })
 export class ShowRoomService {
     constructor(private http: HttpClient) { }
 
-    private apiUrl = "http://localhost:8080/goldsmith/api"
+    private apiUrl = baseurl+"/api";
 
     getAll() {
         return this.http.get<ShowRoom[]>(`${this.apiUrl}/showrooms`);
